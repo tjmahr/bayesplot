@@ -1,18 +1,4 @@
----
-title: "Plotting MCMC draws using the bayesplot package"
-author: "Jonah Gabry"
-date: "`r Sys.Date()`"
-output:
-  rmarkdown::html_vignette:
-    toc: true
-vignette: >
-  %\VignetteIndexEntry{Plotting MCMC draws}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r, child="children/SETTINGS-knitr.txt"}
-```
+# Plotting MCMC Draws
 
 This vignette focuses on plotting parameter estimates from MCMC draws. MCMC
 diagnostic plots are covered in the separate vignette
@@ -154,7 +140,7 @@ see `help("mcmc_pairs")`.
 
 The `mcmc_trace` function creates standard traceplots:
 
-```{r, mcmc_trace}
+```{r, mcmc_trace_mcmc}
 color_scheme_set("blue")
 mcmc_trace(posterior, pars = c("wt", "sigma"))
 ```
@@ -188,16 +174,3 @@ argument).
 ```{r, mcmc_trace_highlight}
 mcmc_trace_highlight(posterior, pars = "sigma", highlight = 3)
 ```
-
-## References
-
-Gabry, J., and Goodrich, B. (2017). rstanarm: Bayesian Applied Regression
-Modeling via Stan. R package version 2.14.1.
-http://mc-stan.org/interfaces/rstanarm.html, https://CRAN.R-project.org/package=rstanarm
-
-Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., and
-Rubin, D. B. (2013). *Bayesian Data Analysis*. Chapman & Hall/CRC Press, London,
-third edition.
-
-Stan Development Team. (2016). *Stan Modeling Language Users
-Guide and Reference Manual*. http://mc-stan.org/documentation/

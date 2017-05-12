@@ -1,19 +1,4 @@
----
-title: "Visual MCMC diagnostics using the bayesplot package"
-author: "Jonah Gabry"
-date: "`r Sys.Date()`"
-output:
-  rmarkdown::html_vignette:
-    toc: true
-    toc_depth: 4
-vignette: >
-  %\VignetteIndexEntry{Visual MCMC diagnostics}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-```{r, child="children/SETTINGS-knitr.txt"}
-```
+# MCMC Diagnostics
 
 ```{r, pkgs, include=FALSE}
 library("ggplot2")
@@ -64,14 +49,13 @@ schools_dat <- list(
 ```
 
 The model is:
-$$
 \begin{align*}
 y_j &\sim {\rm Normal}(\theta_j, \sigma_j), \quad j = 1,\dots,J \\
 \theta_j &\sim {\rm Normal}(\mu, \tau), \quad j = 1, \dots, J \\
 \mu &\sim {\rm Normal}(0, 10) \\
 \tau &\sim {\rm half-Cauchy}(0, 10),
 \end{align*}
-$$
+
 with the normal distribution parameterized by the mean and standard deviation,
 not the variance or precision. In Stan code:
 ```{stan, stancode1, output.var = "schools_mod1"}
@@ -100,12 +84,12 @@ so-called non-centered parameterization (NCP), which replaces the vector
 $\theta$ with a vector $\eta$ of a priori _i.i.d._ standard normal parameters
 and then contructs $\theta$ deterministically from $\eta$ by scaling by $\tau$
 and shifting by $\mu$:
-$$
+
 \begin{align*}
 \theta_j &= \mu + \tau \,\eta_j, \quad j = 1,\dots,J \\
 \eta_j &\sim N(0,1), \quad j = 1,\dots,J.
 \end{align*}
-$$
+
 The Stan code for this model is:
 ```{stan, stancode2, output.var = "schools_mod2"}
 // Saved in 'schools_mod2.stan'
@@ -454,33 +438,3 @@ compare_cp_ncp(
 
 See Betancourt (2017) for more on this particular example as well as the general
 theory behind the energy plots.
-
-## References
-
-Betancourt, M. (2017). A conceptual introduction to Hamiltonian Monte Carlo.
-https://arxiv.org/abs/1701.02434
-
-Betancourt, M. (2016). Diagnosing suboptimal cotangent disintegrations in
-Hamiltonian Monte Carlo. https://arxiv.org/abs/1604.00695
-
-Betancourt, M. and Girolami, M. (2013). Hamiltonian Monte Carlo for hierarchical
-models. https://arxiv.org/abs/1312.0906
-
-Gabry, J., and Goodrich, B. (2017). rstanarm: Bayesian Applied Regression
-Modeling via Stan. R package version 2.14.1.
-http://mc-stan.org/interfaces/rstanarm.html, https://CRAN.R-project.org/package=rstanarm
-
-Gelman, A. and Rubin, D. B. (1992). Inference from iterative simulation using
-multiple sequences. *Statistical Science*. 7(4): 457--472.
-
-Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., and Rubin,
-D. B. (2013). *Bayesian Data Analysis*. Chapman & Hall/CRC Press, London, third
-edition.
-
-Hoffman, M. D. and Gelman, A. (2014). The No-U-Turn Sampler: adaptively setting path lengths in Hamiltonian Monte Carlo. *Journal of Machine Learning Research*. 15:1593--1623.
-
-Rubin, D. B. (1981). Estimation in Parallel Randomized Experiments. *Journal of
-Educational and Behavioral Statistics*. 6:377–401.
-
-Stan Development Team. (2016). *Stan Modeling Language Users
-Guide and Reference Manual*. http://mc-stan.org/documentation/
