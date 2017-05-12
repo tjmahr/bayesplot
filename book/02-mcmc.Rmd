@@ -6,6 +6,7 @@ diagnostic plots are covered in the separate vignette
 and graphical posterior predictive checks are covered in
 [Graphical posterior predictive checks using the bayesplot package](PPC.html).
 
+
 ## Plots for MCMC draws
 
 The **bayesplot** package provides various plotting functions for visualizing

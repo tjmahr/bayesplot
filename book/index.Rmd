@@ -5,7 +5,8 @@ site: bookdown::bookdown_site
 documentclass: book
 output:
   bookdown::pdf_book: default
-  bookdown::gitbook: default
+  bookdown::gitbook:
+    css: style.css
 ---
 
 # User Guide {-}
