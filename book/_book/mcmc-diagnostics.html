@@ -5,33 +5,34 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Bayesplot Documentation</title>
+  <title>Bayesplot</title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-  <meta name="description" content="Bayesplot Documentation">
+  <meta name="description" content="Bayesplot">
   <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Bayesplot Documentation" />
+  <meta property="og:title" content="Bayesplot" />
   <meta property="og:type" content="book" />
   
+  <meta property="og:image" content="images/logo.png" />
   
-  
-  
+  <meta name="github-repo" content="imadmali/bsss" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bayesplot Documentation" />
+  <meta name="twitter:title" content="Bayesplot" />
   
   
-  
+  <meta name="twitter:image" content="images/logo.png" />
 
-<meta name="author" content="Authors">
+<meta name="author" content="Jonah Gabry">
 
 
+<meta name="date" content="2017-05-05">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
-  
+  <link rel="shortcut icon" href="images/logo-icon.png" type="image/x-icon">
 <link rel="prev" href="plotting-mcmc-draws.html">
 <link rel="next" href="references.html">
 
@@ -100,7 +101,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>User Guide</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bayesplot Documentation</a></li>
 <li class="chapter" data-level="1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html"><i class="fa fa-check"></i><b>1</b> Posterior Predictive Checking</a><ul>
 <li class="chapter" data-level="1.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
 <li class="chapter" data-level="1.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#graphical-posterior-predictive-checks"><i class="fa fa-check"></i><b>1.2</b> Graphical posterior predictive checks</a><ul>
@@ -142,7 +143,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesplot Documentation</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesplot</a>
           </h1>
         </div>
 
@@ -228,16 +229,12 @@ model {
 schools_mod2 &lt;-<span class="st"> </span><span class="kw">stan_model</span>(<span class="st">&quot;schools_mod2.stan&quot;</span>)</code></pre></div>
 <p>We then fit the model by calling Stan’s MCMC algorithm using the <code>sampling</code> function,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit1 &lt;-<span class="st"> </span><span class="kw">sampling</span>(schools_mod1, <span class="dt">data =</span> schools_dat)</code></pre></div>
-<pre><code>## Warning: There were 110 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See
+<pre><code>## Warning: There were 74 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See
 ## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</code></pre>
 <pre><code>## Warning: There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See
 ## http://mc-stan.org/misc/warnings.html#bfmi-low</code></pre>
 <pre><code>## Warning: Examine the pairs() plot to diagnose sampling problems</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit2 &lt;-<span class="st"> </span><span class="kw">sampling</span>(schools_mod2, <span class="dt">data =</span> schools_dat)</code></pre></div>
-<pre><code>## Warning: There were 1 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See
-## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup
-
-## Warning: Examine the pairs() plot to diagnose sampling problems</code></pre>
 <p>and extract a <code>iterations x chains x parameters</code> array of posterior draws with <code>as.array</code>,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Extract posterior draws for later use</span>
 posterior1 &lt;-<span class="st"> </span><span class="kw">as.array</span>(fit1)
@@ -251,14 +248,17 @@ posterior2 &lt;-<span class="st"> </span><span class="kw">as.array</span>(fit2)<
 <p>The <strong>bayesplot</strong> package provides the functions <code>mcmc_rhat</code> and <code>mcmc_rhat_hist</code> for visualizing <span class="math inline">\(\hat{R}\)</span> estimates.</p>
 <p>First we’ll quickly fit one of the models above again, this time intentionally using too few MCMC iterations. This should lead to some high <span class="math inline">\(\hat{R}\)</span> values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit1_50iter &lt;-<span class="st"> </span><span class="kw">sampling</span>(schools_mod1, <span class="dt">data =</span> schools_dat, <span class="dt">chains =</span> <span class="dv">2</span>, <span class="dt">iter =</span> <span class="dv">50</span>)</code></pre></div>
+<pre><code>## Warning: There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See
+## http://mc-stan.org/misc/warnings.html#bfmi-low</code></pre>
+<pre><code>## Warning: Examine the pairs() plot to diagnose sampling problems</code></pre>
 <p><strong>bayesplot</strong> also provides a generic <code>rhat</code> extractor function, currently with methods defined for models fit using the <strong>rstan</strong> and <strong>rstanarm</strong> packages. But regardless of how you fit your model, all <strong>bayesplot</strong> needs is a vector of <span class="math inline">\(\hat{R}\)</span> values.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;bayesplot&quot;</span>)
 rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 <span class="kw">print</span>(rhats)</code></pre></div>
-<pre><code>##        mu       tau  theta[1]  theta[2]  theta[3]  theta[4]  theta[5] 
-## 1.0222757 1.3993109 1.0548093 1.0103183 1.0507592 1.0339389 1.2002529 
-##  theta[6]  theta[7]  theta[8]      lp__ 
-## 0.9860313 1.0822593 1.1466735 2.0460660</code></pre>
+<pre><code>##       mu      tau theta[1] theta[2] theta[3] theta[4] theta[5] theta[6] 
+## 1.073284 1.885347 1.018507 1.027963 1.098741 1.004969 1.220662 1.055737 
+## theta[7] theta[8]     lp__ 
+## 1.100142 1.135343 2.082188</code></pre>
 <p>We can visualize the <span class="math inline">\(\hat{R}\)</span> values with the <code>mcmc_rhat</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;brightblue&quot;</span>) <span class="co"># see help(&quot;color_scheme_set&quot;)</span>
 <span class="kw">mcmc_rhat</span>(rhats)</code></pre></div>
@@ -507,7 +507,7 @@ rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We can see the same information shown by <code>mcmc_rhat</code> but in histogram form using the <code>mcmc_rhat_hist</code> function. See the <strong>Examples</strong> section in <code>help(&quot;mcmc_rhat_hist&quot;)</code> for examples.</p>
 </div>
 <div id="effective-sample-size" class="section level3">
@@ -516,10 +516,10 @@ rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 <p>The <strong>bayesplot</strong> package provides a generic <code>neff_ratio</code> extractor function, currently with methods defined for models fit using the <strong>rstan</strong> and <strong>rstanarm</strong> packages. But regardless of how you fit your model, all <strong>bayesplot</strong> needs is a vector of <span class="math inline">\(n_{eff}/N\)</span> values. The <code>mcmc_neff</code> and <code>mcmc_neff_hist</code> can then be used to plot the ratios.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ratios1 &lt;-<span class="st"> </span><span class="kw">neff_ratio</span>(fit1)
 <span class="kw">print</span>(ratios1)</code></pre></div>
-<pre><code>##          mu         tau    theta[1]    theta[2]    theta[3]    theta[4] 
-## 0.059901731 0.008310285 0.051118991 0.140950481 0.147690290 0.187710822 
-##    theta[5]    theta[6]    theta[7]    theta[8]        lp__ 
-## 0.122750242 0.156960330 0.054179480 0.167771725 0.005274890</code></pre>
+<pre><code>##         mu        tau   theta[1]   theta[2]   theta[3]   theta[4] 
+## 0.21647719 0.06565174 0.20047989 0.38675637 0.38101303 0.37305936 
+##   theta[5]   theta[6]   theta[7]   theta[8]       lp__ 
+## 0.29969987 0.38004908 0.15010766 0.36121886 0.01204278</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_neff</span>(ratios1)</code></pre></div>
 <pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
@@ -809,21 +809,21 @@ neff2 &lt;-<span class="st"> </span><span class="kw">neff_ratio</span>(fit2, <sp
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lp1 &lt;-<span class="st"> </span><span class="kw">log_posterior</span>(fit1)
 <span class="kw">head</span>(lp1)</code></pre></div>
 <pre><code>##   Iteration     Value Chain
-## 1         1 -15.67805     1
-## 2         2 -14.53603     1
-## 3         3 -16.81855     1
-## 4         4 -12.10150     1
-## 5         5 -15.09718     1
-## 6         6 -15.49388     1</code></pre>
+## 1         1 -19.11270     1
+## 2         2 -20.12155     1
+## 3         3 -21.99988     1
+## 4         4 -21.94970     1
+## 5         5 -25.40022     1
+## 6         6 -27.81578     1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">np1 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit1)
 <span class="kw">head</span>(np1)</code></pre></div>
 <pre><code>##   Iteration     Parameter     Value Chain
-## 1         1 accept_stat__ 0.7096107     1
-## 2         2 accept_stat__ 0.7060859     1
-## 3         3 accept_stat__ 0.9056693     1
-## 4         4 accept_stat__ 0.8526752     1
-## 5         5 accept_stat__ 0.5432331     1
-## 6         6 accept_stat__ 0.7758836     1</code></pre>
+## 1         1 accept_stat__ 0.7950952     1
+## 2         2 accept_stat__ 0.7122167     1
+## 3         3 accept_stat__ 0.9630644     1
+## 4         4 accept_stat__ 0.9165774     1
+## 5         5 accept_stat__ 0.7328224     1
+## 6         6 accept_stat__ 0.9992060     1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># for the second model</span>
 lp2 &lt;-<span class="st"> </span><span class="kw">log_posterior</span>(fit2)
 np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</code></pre></div>
@@ -850,7 +850,7 @@ np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</cod
 <p>but we have far fewer of them to worry about. If there are only a few divergences we can often get rid of them by increasing the target acceptance rate (<code>adapt_delta</code>), which has the effect of lowering the stepsize used by the sampler and allowing the Markov chains to explore more complicated curvature in the target distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit1b &lt;-<span class="st"> </span><span class="kw">sampling</span>(schools_mod1, <span class="dt">data =</span> schools_dat,
                   <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">adapt_delta =</span> <span class="fl">0.99</span>))</code></pre></div>
-<pre><code>## Warning: There were 35 divergent transitions after warmup. Increasing adapt_delta above 0.99 may help. See
+<pre><code>## Warning: There were 22 divergent transitions after warmup. Increasing adapt_delta above 0.99 may help. See
 ## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</code></pre>
 <pre><code>## Warning: There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See
 ## http://mc-stan.org/misc/warnings.html#bfmi-low</code></pre>
