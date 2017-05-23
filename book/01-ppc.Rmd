@@ -17,7 +17,7 @@ The idea behind posterior predictive checking is simple: if a model is a
 good fit then we should be able to use it to generate data that looks a lot like
 the data we observed.
 
-#### Posterior predictive distribution
+## Posterior predictive distribution
 To generate the data used for posterior predictive checks (PPCs) we simulate
 from the _posterior predictive distribution_ The posterior predictive
 distribution is the distribution of the outcome variable implied by a model
