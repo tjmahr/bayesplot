@@ -12,16 +12,16 @@
 
   <meta property="og:title" content="Bayesplot" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mc-stan.org/bayesplot/index.html" />
+  <meta property="og:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
   
-  <meta property="og:image" content="images/logo.png" />
-  
-  <meta name="github-repo" content="imadmali/bsss" />
+  <meta name="github-repo" content="stan-dev/bayesplot" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Bayesplot" />
   
   
-  <meta name="twitter:image" content="images/logo.png" />
+  <meta name="twitter:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
 
 <meta name="author" content="Jonah Gabry">
 
@@ -104,14 +104,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bayesplot Documentation</a></li>
 <li class="chapter" data-level="1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html"><i class="fa fa-check"></i><b>1</b> Posterior Predictive Checking</a><ul>
 <li class="chapter" data-level="1.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
-<li class="chapter" data-level="1.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#graphical-posterior-predictive-checks"><i class="fa fa-check"></i><b>1.2</b> Graphical posterior predictive checks</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#histograms-and-density-estimates"><i class="fa fa-check"></i><b>1.2.1</b> Histograms and density estimates</a></li>
-<li class="chapter" data-level="1.2.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#distributions-of-test-statistics"><i class="fa fa-check"></i><b>1.2.2</b> Distributions of test statistics</a></li>
-<li class="chapter" data-level="1.2.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#other-ppcs-and-ppcs-by-group"><i class="fa fa-check"></i><b>1.2.3</b> Other PPCs and PPCs by group</a></li>
+<li class="chapter" data-level="1.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#posterior-predictive-distribution"><i class="fa fa-check"></i><b>1.2</b> Posterior predictive distribution</a></li>
+<li class="chapter" data-level="1.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#graphical-posterior-predictive-checks"><i class="fa fa-check"></i><b>1.3</b> Graphical posterior predictive checks</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#histograms-and-density-estimates"><i class="fa fa-check"></i><b>1.3.1</b> Histograms and density estimates</a></li>
+<li class="chapter" data-level="1.3.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#distributions-of-test-statistics"><i class="fa fa-check"></i><b>1.3.2</b> Distributions of test statistics</a></li>
+<li class="chapter" data-level="1.3.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#other-ppcs-and-ppcs-by-group"><i class="fa fa-check"></i><b>1.3.3</b> Other PPCs and PPCs by group</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#providing-an-interface-to-bayesplot-ppcs-from-another-package"><i class="fa fa-check"></i><b>1.3</b> Providing an interface to bayesplot PPCs from another package</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#defining-a-pp_check-method"><i class="fa fa-check"></i><b>1.3.1</b> Defining a <code>pp_check</code> method</a></li>
-<li class="chapter" data-level="1.3.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#examples-of-pp_check-methods-in-other-packages"><i class="fa fa-check"></i><b>1.3.2</b> Examples of <code>pp_check</code> methods in other packages</a></li>
+<li class="chapter" data-level="1.4" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#providing-an-interface-to-bayesplot-ppcs-from-another-package"><i class="fa fa-check"></i><b>1.4</b> Providing an interface to bayesplot PPCs from another package</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#defining-a-pp_check-method"><i class="fa fa-check"></i><b>1.4.1</b> Defining a <code>pp_check</code> method</a></li>
+<li class="chapter" data-level="1.4.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#examples-of-pp_check-methods-in-other-packages"><i class="fa fa-check"></i><b>1.4.2</b> Examples of <code>pp_check</code> methods in other packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="plotting-mcmc-draws.html"><a href="plotting-mcmc-draws.html"><i class="fa fa-check"></i><b>2</b> Plotting MCMC Draws</a><ul>
@@ -229,9 +230,9 @@ model {
 schools_mod2 &lt;-<span class="st"> </span><span class="kw">stan_model</span>(<span class="st">&quot;schools_mod2.stan&quot;</span>)</code></pre></div>
 <p>We then fit the model by calling Stan’s MCMC algorithm using the <code>sampling</code> function,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit1 &lt;-<span class="st"> </span><span class="kw">sampling</span>(schools_mod1, <span class="dt">data =</span> schools_dat)</code></pre></div>
-<pre><code>## Warning: There were 74 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See
+<pre><code>## Warning: There were 71 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See
 ## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</code></pre>
-<pre><code>## Warning: There were 1 chains where the estimated Bayesian Fraction of Missing Information was low. See
+<pre><code>## Warning: There were 2 chains where the estimated Bayesian Fraction of Missing Information was low. See
 ## http://mc-stan.org/misc/warnings.html#bfmi-low</code></pre>
 <pre><code>## Warning: Examine the pairs() plot to diagnose sampling problems</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit2 &lt;-<span class="st"> </span><span class="kw">sampling</span>(schools_mod2, <span class="dt">data =</span> schools_dat)</code></pre></div>
@@ -256,9 +257,9 @@ posterior2 &lt;-<span class="st"> </span><span class="kw">as.array</span>(fit2)<
 rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 <span class="kw">print</span>(rhats)</code></pre></div>
 <pre><code>##       mu      tau theta[1] theta[2] theta[3] theta[4] theta[5] theta[6] 
-## 1.073284 1.885347 1.018507 1.027963 1.098741 1.004969 1.220662 1.055737 
+## 1.080310 1.485237 1.320147 1.025549 1.080071 1.087980 1.137545 1.052657 
 ## theta[7] theta[8]     lp__ 
-## 1.100142 1.135343 2.082188</code></pre>
+## 1.190582 1.067645 1.492206</code></pre>
 <p>We can visualize the <span class="math inline">\(\hat{R}\)</span> values with the <code>mcmc_rhat</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;brightblue&quot;</span>) <span class="co"># see help(&quot;color_scheme_set&quot;)</span>
 <span class="kw">mcmc_rhat</span>(rhats)</code></pre></div>
@@ -341,7 +342,7 @@ rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/mcmc_rhat-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_rhat-1.png" width="672" /></p>
 <p>In the plot, the points representing the <span class="math inline">\(\hat{R}\)</span> values are colored based on whether they are less than <span class="math inline">\(1.05\)</span>, between <span class="math inline">\(1.05\)</span> and <span class="math inline">\(1.1\)</span>, or greater than <span class="math inline">\(1.1\)</span>.</p>
 <p>We can see the names of the parameters with the concerning <span class="math inline">\(\hat{R}\)</span> values by turning on the <span class="math inline">\(y\)</span>-axis text using the <code>yaxis_text</code> convenience function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_rhat</span>(rhats) +<span class="st"> </span><span class="kw">yaxis_text</span>()</code></pre></div>
@@ -424,7 +425,7 @@ rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/mcmc_rhat-2-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_rhat-2-1.png" width="672" /></p>
 <p>The axis <span class="math inline">\(y\)</span>-axis text is off by default for this plot because it’s only possible to see the labels clearly for models with very few parameters.</p>
 <p>If we look at the same model fit using longer Markov chains we should see all <span class="math inline">\(\hat{R} &lt; 1.1\)</span>, and all points in the plot the same (light) color:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_rhat</span>(<span class="dt">rhat =</span> <span class="kw">rhat</span>(fit1)) +<span class="st"> </span><span class="kw">yaxis_text</span>()</code></pre></div>
@@ -507,7 +508,7 @@ rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We can see the same information shown by <code>mcmc_rhat</code> but in histogram form using the <code>mcmc_rhat_hist</code> function. See the <strong>Examples</strong> section in <code>help(&quot;mcmc_rhat_hist&quot;)</code> for examples.</p>
 </div>
 <div id="effective-sample-size" class="section level3">
@@ -517,9 +518,9 @@ rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ratios1 &lt;-<span class="st"> </span><span class="kw">neff_ratio</span>(fit1)
 <span class="kw">print</span>(ratios1)</code></pre></div>
 <pre><code>##         mu        tau   theta[1]   theta[2]   theta[3]   theta[4] 
-## 0.21647719 0.06565174 0.20047989 0.38675637 0.38101303 0.37305936 
+## 0.14839829 0.08745589 0.25341820 0.32262352 0.26561770 0.27293763 
 ##   theta[5]   theta[6]   theta[7]   theta[8]       lp__ 
-## 0.29969987 0.38004908 0.15010766 0.36121886 0.01204278</code></pre>
+## 0.23667764 0.33185829 0.23534462 0.32400535 0.05227932</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_neff</span>(ratios1)</code></pre></div>
 <pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
@@ -600,7 +601,7 @@ rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/print-neff-ratios-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/print-neff-ratios-1.png" width="672" /></p>
 <p>In the plot, the points representing the values of <span class="math inline">\(n_{eff}/N\)</span> are colored based on whether they are less than <span class="math inline">\(0.1\)</span>, between <span class="math inline">\(0.1\)</span> and <span class="math inline">\(0.5\)</span>, or greater than <span class="math inline">\(0.5\)</span>. These particular values are arbitrary in that they have no particular theoretical meaning, but a useful heuristic is to worry about any <span class="math inline">\(n_{eff}/N\)</span> less than <span class="math inline">\(0.1\)</span>.</p>
 <p>One important thing to keep in mind is that these ratios will depend not only on the model being fit but also on the particular MCMC algorithm used. One reason why we have such high ratios of <span class="math inline">\(n_{eff}\)</span> to <span class="math inline">\(N\)</span> is that the No-U-Turn sampler used by <strong>rstan</strong> generally produces draws from the posterior distribution with much lower autocorrelations compared to draws obtained using other MCMC algorithms (e.g., Gibbs).</p>
 <p>Even for models fit using <strong>rstan</strong> the parameterization can make a big difference. Here are the <span class="math inline">\(n_{eff}/N\)</span> plots for <code>fit1</code> and <code>fit2</code> side by side.</p>
@@ -776,7 +777,7 @@ neff2 &lt;-<span class="st"> </span><span class="kw">neff_ratio</span>(fit2, <sp
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/mcmc_neff-compare-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_neff-compare-1.png" width="672" /></p>
 <p>Because of the difference in parameterization, the effective sample sizes are much better for the second model, the non-centered parameterization.</p>
 </div>
 <div id="autocorrelation" class="section level3">
@@ -788,7 +789,7 @@ neff2 &lt;-<span class="st"> </span><span class="kw">neff_ratio</span>(fit2, <sp
   <span class="kw">mcmc_acf</span>(posterior2, <span class="dt">pars =</span> <span class="st">&quot;eta[1]&quot;</span>, <span class="dt">lags =</span> <span class="dv">10</span>),
   <span class="dt">ncol =</span> <span class="dv">2</span>
 )</code></pre></div>
-<p><img src="_main_files/figure-html/mcmc_acf-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_acf-1.png" width="672" /></p>
 </div>
 </div>
 <div id="diagnostics-for-the-no-u-turn-sampler" class="section level2">
@@ -809,21 +810,21 @@ neff2 &lt;-<span class="st"> </span><span class="kw">neff_ratio</span>(fit2, <sp
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lp1 &lt;-<span class="st"> </span><span class="kw">log_posterior</span>(fit1)
 <span class="kw">head</span>(lp1)</code></pre></div>
 <pre><code>##   Iteration     Value Chain
-## 1         1 -19.11270     1
-## 2         2 -20.12155     1
-## 3         3 -21.99988     1
-## 4         4 -21.94970     1
-## 5         5 -25.40022     1
-## 6         6 -27.81578     1</code></pre>
+## 1         1 -23.81556     1
+## 2         2 -24.44603     1
+## 3         3 -23.48532     1
+## 4         4 -22.89093     1
+## 5         5 -21.55250     1
+## 6         6 -18.60815     1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">np1 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit1)
 <span class="kw">head</span>(np1)</code></pre></div>
 <pre><code>##   Iteration     Parameter     Value Chain
-## 1         1 accept_stat__ 0.7950952     1
-## 2         2 accept_stat__ 0.7122167     1
-## 3         3 accept_stat__ 0.9630644     1
-## 4         4 accept_stat__ 0.9165774     1
-## 5         5 accept_stat__ 0.7328224     1
-## 6         6 accept_stat__ 0.9992060     1</code></pre>
+## 1         1 accept_stat__ 0.8569863     1
+## 2         2 accept_stat__ 0.9258705     1
+## 3         3 accept_stat__ 0.9714976     1
+## 4         4 accept_stat__ 0.9831737     1
+## 5         5 accept_stat__ 0.7612711     1
+## 6         6 accept_stat__ 0.8953009     1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># for the second model</span>
 lp2 &lt;-<span class="st"> </span><span class="kw">log_posterior</span>(fit2)
 np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</code></pre></div>
@@ -834,23 +835,23 @@ np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</cod
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;mix-brightblue-gray&quot;</span>)
 <span class="kw">mcmc_trace</span>(posterior1, <span class="dt">pars =</span> <span class="st">&quot;tau&quot;</span>, <span class="dt">divergences =</span> np1) +
 <span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Post-warmup Iteration&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/mcmc_trace-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_trace-1.png" width="672" /></p>
 <p>To look deeper at the information conveyed by the divergences we can use the <code>mcmc_nuts_divergence</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;red&quot;</span>)
 <span class="kw">mcmc_nuts_divergence</span>(np1, lp1)</code></pre></div>
-<p><img src="_main_files/figure-html/mcmc_nuts_divergence-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_nuts_divergence-1.png" width="672" /></p>
 <p>In the top panel we see the distribution of the log-posterior when there was no divergence vs the distribution when there was a divergence. Divergences often indicate that some part of the posterior isn’t being explored and <code>lp|Divergence</code> will have lighter tails than <code>lp|No divergence</code>.</p>
 <p>The bottom panel shows the same thing but instead of the log-posterior the NUTS acceptance statistic is shown.</p>
 <p>Specifying the optional <code>chain</code> argument will overlay the plot just for a particular Markov chain on the plot for all chains combined:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_nuts_divergence</span>(np1, lp1, <span class="dt">chain =</span> <span class="dv">4</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/mcmc_nuts_divergence-chain-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_nuts_divergence-chain-1.png" width="672" /></p>
 <p>For the non-centered parameterization we also had warnings about divergences</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_nuts_divergence</span>(np2, lp2)</code></pre></div>
-<p><img src="_main_files/figure-html/mcmc_nuts_divergence-2-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_nuts_divergence-2-1.png" width="672" /></p>
 <p>but we have far fewer of them to worry about. If there are only a few divergences we can often get rid of them by increasing the target acceptance rate (<code>adapt_delta</code>), which has the effect of lowering the stepsize used by the sampler and allowing the Markov chains to explore more complicated curvature in the target distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit1b &lt;-<span class="st"> </span><span class="kw">sampling</span>(schools_mod1, <span class="dt">data =</span> schools_dat,
                   <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">adapt_delta =</span> <span class="fl">0.99</span>))</code></pre></div>
-<pre><code>## Warning: There were 22 divergent transitions after warmup. Increasing adapt_delta above 0.99 may help. See
+<pre><code>## Warning: There were 10 divergent transitions after warmup. Increasing adapt_delta above 0.99 may help. See
 ## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</code></pre>
 <pre><code>## Warning: There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See
 ## http://mc-stan.org/misc/warnings.html#bfmi-low</code></pre>
@@ -859,9 +860,9 @@ np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</cod
                   <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">adapt_delta =</span> <span class="fl">0.99</span>))</code></pre></div>
 <p>For the first model and this particular data, increasing <code>adapt_delta</code> will not solve the problem and a reparameterization is required.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_nuts_divergence</span>(<span class="kw">nuts_params</span>(fit1b), <span class="kw">log_posterior</span>(fit1b))</code></pre></div>
-<p><img src="_main_files/figure-html/mcmc_nuts_divergence-3-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_nuts_divergence-3-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_nuts_divergence</span>(<span class="kw">nuts_params</span>(fit2b), <span class="kw">log_posterior</span>(fit2b))</code></pre></div>
-<p><img src="_main_files/figure-html/mcmc_nuts_divergence-3-2.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_nuts_divergence-3-2.png" width="672" /></p>
 </div>
 <div id="energy-and-bayesian-fraction-of-missing-information" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Energy and Bayesian fraction of missing information</h3>
@@ -1024,7 +1025,7 @@ np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</cod
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/mcmc_nuts_energy-1-1.png" width="672" /> To keep the chains separate add <code>merge_chains=FALSE</code>:</p>
+<p><img src="bayesplot_files/figure-html/mcmc_nuts_energy-1-1.png" width="672" /> To keep the chains separate add <code>merge_chains=FALSE</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_nuts_energy</span>(np1, <span class="dt">merge_chains =</span> <span class="ot">FALSE</span>, <span class="dt">binwidth =</span> <span class="dv">1</span>)</code></pre></div>
 <pre><code>## Warning in grid.Call(L_stringMetric, as.graphicsAnnot(x$label)): font
 ## &quot;Symbol&quot; could not be found for family &quot;&quot;</code></pre>
@@ -1182,7 +1183,7 @@ np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</cod
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/mcmc_nuts_energy-2-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_nuts_energy-2-1.png" width="672" /></p>
 <p>The two histograms ideally look the same (Betancourt, 2017), which is only the case for the non-centered parameterization (bottom panel):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">compare_cp_ncp</span>(
   <span class="kw">mcmc_nuts_energy</span>(np1, <span class="dt">binwidth =</span> <span class="dv">1</span>/<span class="dv">2</span>),
@@ -1499,7 +1500,7 @@ np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</cod
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/mcmc_nuts_energy-3-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_nuts_energy-3-1.png" width="672" /></p>
 <p>The difference between the parameterizations is even more apparent if we force the stepsize to a smaller value and help the chains explore more of the posterior:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">np1b &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit1b)
 np2b &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2b)
@@ -1818,7 +1819,7 @@ np2b &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2b)
 
 ## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<p><img src="_main_files/figure-html/mcmc_nuts_energy-4-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_nuts_energy-4-1.png" width="672" /></p>
 <p>See Betancourt (2017) for more on this particular example as well as the general theory behind the energy plots.</p>
 
 </div>
@@ -1843,14 +1844,14 @@ np2b &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2b)
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
+"github": true,
+"facebook": false,
+"twitter": false,
 "google": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": false
 },
 "fontsettings": {
 "theme": "white",
@@ -1861,7 +1862,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf"],
+"download": ["bayesplot.pdf"],
 "toc": {
 "collapse": "subsection"
 }

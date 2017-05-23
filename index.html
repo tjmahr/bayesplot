@@ -12,16 +12,16 @@
 
   <meta property="og:title" content="Bayesplot" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mc-stan.org/bayesplot/index.html" />
+  <meta property="og:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
   
-  <meta property="og:image" content="images/logo.png" />
-  
-  <meta name="github-repo" content="imadmali/bsss" />
+  <meta name="github-repo" content="stan-dev/bayesplot" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Bayesplot" />
   
   
-  <meta name="twitter:image" content="images/logo.png" />
+  <meta name="twitter:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
 
 <meta name="author" content="Jonah Gabry">
 
@@ -104,14 +104,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bayesplot Documentation</a></li>
 <li class="chapter" data-level="1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html"><i class="fa fa-check"></i><b>1</b> Posterior Predictive Checking</a><ul>
 <li class="chapter" data-level="1.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
-<li class="chapter" data-level="1.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#graphical-posterior-predictive-checks"><i class="fa fa-check"></i><b>1.2</b> Graphical posterior predictive checks</a><ul>
-<li class="chapter" data-level="1.2.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#histograms-and-density-estimates"><i class="fa fa-check"></i><b>1.2.1</b> Histograms and density estimates</a></li>
-<li class="chapter" data-level="1.2.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#distributions-of-test-statistics"><i class="fa fa-check"></i><b>1.2.2</b> Distributions of test statistics</a></li>
-<li class="chapter" data-level="1.2.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#other-ppcs-and-ppcs-by-group"><i class="fa fa-check"></i><b>1.2.3</b> Other PPCs and PPCs by group</a></li>
+<li class="chapter" data-level="1.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#posterior-predictive-distribution"><i class="fa fa-check"></i><b>1.2</b> Posterior predictive distribution</a></li>
+<li class="chapter" data-level="1.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#graphical-posterior-predictive-checks"><i class="fa fa-check"></i><b>1.3</b> Graphical posterior predictive checks</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#histograms-and-density-estimates"><i class="fa fa-check"></i><b>1.3.1</b> Histograms and density estimates</a></li>
+<li class="chapter" data-level="1.3.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#distributions-of-test-statistics"><i class="fa fa-check"></i><b>1.3.2</b> Distributions of test statistics</a></li>
+<li class="chapter" data-level="1.3.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#other-ppcs-and-ppcs-by-group"><i class="fa fa-check"></i><b>1.3.3</b> Other PPCs and PPCs by group</a></li>
 </ul></li>
-<li class="chapter" data-level="1.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#providing-an-interface-to-bayesplot-ppcs-from-another-package"><i class="fa fa-check"></i><b>1.3</b> Providing an interface to bayesplot PPCs from another package</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#defining-a-pp_check-method"><i class="fa fa-check"></i><b>1.3.1</b> Defining a <code>pp_check</code> method</a></li>
-<li class="chapter" data-level="1.3.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#examples-of-pp_check-methods-in-other-packages"><i class="fa fa-check"></i><b>1.3.2</b> Examples of <code>pp_check</code> methods in other packages</a></li>
+<li class="chapter" data-level="1.4" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#providing-an-interface-to-bayesplot-ppcs-from-another-package"><i class="fa fa-check"></i><b>1.4</b> Providing an interface to bayesplot PPCs from another package</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#defining-a-pp_check-method"><i class="fa fa-check"></i><b>1.4.1</b> Defining a <code>pp_check</code> method</a></li>
+<li class="chapter" data-level="1.4.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#examples-of-pp_check-methods-in-other-packages"><i class="fa fa-check"></i><b>1.4.2</b> Examples of <code>pp_check</code> methods in other packages</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="plotting-mcmc-draws.html"><a href="plotting-mcmc-draws.html"><i class="fa fa-check"></i><b>2</b> Plotting MCMC Draws</a><ul>
@@ -162,6 +163,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>bayesplot</strong> is an R package providing an extensive library of plotting functions for use after fitting Bayesian models (typically with MCMC). Currently <strong>bayesplot</strong> offers a variety of plots of posterior draws, visual MCMC diagnostics, as well as graphical posterior predictive checking. Additional functionality (e.g. for forecasting/out-of-sample prediction and other inference-related tasks) will be added in future releases.</p>
 <p>The plots created by <strong>bayesplot</strong> are ggplot objects, which means that after a plot is created it can be further customized using the various functions for modifying ggplot objects provided by the <strong>ggplot2</strong> package.</p>
 <p>The idea behind <strong>bayesplot</strong> is not only to provide convenient functionality for users, but also a common set of functions that can be easily used by developers working on a variety of packages for Bayesian modeling, particularly (but not necessarily) those powered by <a href="https://github.com/stan-dev/rstan"><strong>RStan</strong></a>.</p>
+<p><strong>RELATED PACKAGES</strong></p>
+<ul>
+<li><a href="http://mc-stan.org/interfaces/rstan.html">RStan</a></li>
+<li><a href="http://mc-stan.org/interfaces/rstanarm.html">RStanARM</a></li>
+<li><a href="http://mc-stan.org/interfaces/loo.html">Loo</a></li>
+</ul>
 
 </div>
             </section>
@@ -183,14 +190,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
+"github": true,
+"facebook": false,
+"twitter": false,
 "google": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": false
 },
 "fontsettings": {
 "theme": "white",
@@ -201,7 +208,7 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf"],
+"download": ["bayesplot.pdf"],
 "toc": {
 "collapse": "subsection"
 }
