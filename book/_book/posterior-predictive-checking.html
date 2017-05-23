@@ -12,16 +12,16 @@
 
   <meta property="og:title" content="Bayesplot" />
   <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://mc-stan.org/bayesplot/index.html" />
+  <meta property="og:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
   
-  <meta property="og:image" content="images/logo.png" />
-  
-  <meta name="github-repo" content="imadmali/bsss" />
+  <meta name="github-repo" content="stan-dev/bayesplot" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Bayesplot" />
   
   
-  <meta name="twitter:image" content="images/logo.png" />
+  <meta name="twitter:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
 
 <meta name="author" content="Jonah Gabry">
 
@@ -190,11 +190,11 @@ fit_poisson &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(y ~<s
 ## ------
 ## 
 ## Estimates:
-##             Median        MAD_SD       
-## (Intercept)  3.100000e+00  0.000000e+00
-## roach1       6.981865e+15  8.931739e+13
-## treatment   -5.000000e-01  0.000000e+00
-## senior      -4.000000e-01  0.000000e+00
+##             Median   MAD_SD  
+## (Intercept)      3.1      0.0
+## roach1      698186.5   8931.7
+## treatment       -0.5      0.0
+## senior          -0.4      0.0
 ## 
 ## Sample avg. posterior predictive 
 ## distribution of y (X = xbar):
@@ -212,12 +212,12 @@ fit_poisson &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(y ~<s
 ## ------
 ## 
 ## Estimates:
-##                       Median        MAD_SD       
-## (Intercept)            2.800000e+00  2.000000e-01
-## roach1                 1.303720e+16  2.528791e+15
-## treatment             -8.000000e-01  2.000000e-01
-## senior                -3.000000e-01  3.000000e-01
-## reciprocal_dispersion  3.000000e-01  0.000000e+00
+##                       Median    MAD_SD   
+## (Intercept)                 2.8       0.2
+## roach1                1303719.8  252879.1
+## treatment                  -0.8       0.2
+## senior                     -0.3       0.3
+## reciprocal_dispersion       0.3       0.0
 ## 
 ## Sample avg. posterior predictive 
 ## distribution of y (X = xbar):
@@ -1182,14 +1182,14 @@ y &lt;-<span class="st"> </span>roaches$y
 require(["gitbook"], function(gitbook) {
 gitbook.start({
 "sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
+"github": true,
+"facebook": false,
+"twitter": false,
 "google": false,
 "weibo": false,
 "instapper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+"all": false
 },
 "fontsettings": {
 "theme": "white",

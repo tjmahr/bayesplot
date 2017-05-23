@@ -2,7 +2,8 @@
 title: "Bayesplot"
 author: ["Jonah Gabry"]
 date: "May 05, 2017"
-github-repo: "imadmali/bsss"
+url: 'https\://mc-stan.org/bayesplot/index.html'
+github-repo: "stan-dev/bayesplot"
 cover-image: "images/logo.png"
 favicon: "images/logo-icon.png"
 site: bookdown::bookdown_site
@@ -11,6 +12,12 @@ output:
   bookdown::pdf_book: default
   bookdown::gitbook:
     css: style.css
+    config:
+      sharing:
+        github: yes
+        twitter: no
+        facebook: no
+        all: no
 ---
 
 # Bayesplot Documentation {-}
@@ -18,7 +25,6 @@ output:
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/logo.png")
 ```
-
 
 **bayesplot** is an R package providing an extensive library of plotting functions for use
 after fitting Bayesian models (typically with MCMC). Currently **bayesplot** offers a variety
@@ -34,3 +40,9 @@ The idea behind **bayesplot** is not only to provide convenient functionality fo
 also a common set of functions that can be easily used by developers working on a variety of
 packages for Bayesian modeling, particularly (but not necessarily) those powered by
 [**RStan**](https://github.com/stan-dev/rstan).
+
+**RELATED PACKAGES**
+
+* [RStan](http://mc-stan.org/interfaces/rstan.html)
+* [RStanARM](http://mc-stan.org/interfaces/rstanarm.html)
+* [Loo](http://mc-stan.org/interfaces/loo.html)
