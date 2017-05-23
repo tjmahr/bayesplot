@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import "variables";
+$base-font: 'Inconsolata', monospace;
+.book .book-body .page-wrapper .page-inner p {
+	font-family: $base-font !important;
+	color: #222;
+}
+
+.book .book-body .page-wrapper .page-inner a {
+    color: #7f0000 !important;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h1.title {
+	color: red !important;
+	font-family: 'Inconsolata', monospace;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h1, h4.author {
+	color: blue !important;
+	font-family: 'Inconsolata', monospace;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h1, h4.date {
+	color: red !important;
+	font-family: 'Inconsolata', monospace;
+}
+
+.book .book-body .page-wrapper .page-inner section.normal h1, h2, h3, h4, h5 {
+	color: purple !important;
+	font-family: 'Inconsolata', monospace;
+}

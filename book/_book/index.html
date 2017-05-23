@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Bayesplot</title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="Bayesplot">
+  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Bayesplot" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:image" content="images/logo.png" />
+  
+  <meta name="github-repo" content="imadmali/bsss" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Bayesplot" />
+  
+  
+  <meta name="twitter:image" content="images/logo.png" />
+
+<meta name="author" content="Jonah Gabry">
+
+
+<meta name="date" content="2017-05-05">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <link rel="shortcut icon" href="images/logo-icon.png" type="image/x-icon">
+
+<link rel="next" href="posterior-predictive-checking.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bayesplot Documentation</a></li>
+<li class="chapter" data-level="1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html"><i class="fa fa-check"></i><b>1</b> Posterior Predictive Checking</a><ul>
+<li class="chapter" data-level="1.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
+<li class="chapter" data-level="1.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#graphical-posterior-predictive-checks"><i class="fa fa-check"></i><b>1.2</b> Graphical posterior predictive checks</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#histograms-and-density-estimates"><i class="fa fa-check"></i><b>1.2.1</b> Histograms and density estimates</a></li>
+<li class="chapter" data-level="1.2.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#distributions-of-test-statistics"><i class="fa fa-check"></i><b>1.2.2</b> Distributions of test statistics</a></li>
+<li class="chapter" data-level="1.2.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#other-ppcs-and-ppcs-by-group"><i class="fa fa-check"></i><b>1.2.3</b> Other PPCs and PPCs by group</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#providing-an-interface-to-bayesplot-ppcs-from-another-package"><i class="fa fa-check"></i><b>1.3</b> Providing an interface to bayesplot PPCs from another package</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#defining-a-pp_check-method"><i class="fa fa-check"></i><b>1.3.1</b> Defining a <code>pp_check</code> method</a></li>
+<li class="chapter" data-level="1.3.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#examples-of-pp_check-methods-in-other-packages"><i class="fa fa-check"></i><b>1.3.2</b> Examples of <code>pp_check</code> methods in other packages</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="plotting-mcmc-draws.html"><a href="plotting-mcmc-draws.html"><i class="fa fa-check"></i><b>2</b> Plotting MCMC Draws</a><ul>
+<li class="chapter" data-level="2.1" data-path="plotting-mcmc-draws.html"><a href="plotting-mcmc-draws.html#plots-for-mcmc-draws"><i class="fa fa-check"></i><b>2.1</b> Plots for MCMC draws</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="plotting-mcmc-draws.html"><a href="plotting-mcmc-draws.html#interval-estimates"><i class="fa fa-check"></i><b>2.1.1</b> Interval estimates</a></li>
+<li class="chapter" data-level="2.1.2" data-path="plotting-mcmc-draws.html"><a href="plotting-mcmc-draws.html#histograms-and-density-estimates-1"><i class="fa fa-check"></i><b>2.1.2</b> Histograms and density estimates</a></li>
+<li class="chapter" data-level="2.1.3" data-path="plotting-mcmc-draws.html"><a href="plotting-mcmc-draws.html#scatterplots"><i class="fa fa-check"></i><b>2.1.3</b> Scatterplots</a></li>
+<li class="chapter" data-level="2.1.4" data-path="plotting-mcmc-draws.html"><a href="plotting-mcmc-draws.html#traceplots"><i class="fa fa-check"></i><b>2.1.4</b> Traceplots</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="mcmc-diagnostics.html"><a href="mcmc-diagnostics.html"><i class="fa fa-check"></i><b>3</b> MCMC Diagnostics</a><ul>
+<li class="chapter" data-level="3.1" data-path="mcmc-diagnostics.html"><a href="mcmc-diagnostics.html#general-mcmc-diagnostics"><i class="fa fa-check"></i><b>3.1</b> General MCMC diagnostics</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="mcmc-diagnostics.html"><a href="mcmc-diagnostics.html#rhat-potential-scale-reduction-statistic"><i class="fa fa-check"></i><b>3.1.1</b> Rhat: potential scale reduction statistic</a></li>
+<li class="chapter" data-level="3.1.2" data-path="mcmc-diagnostics.html"><a href="mcmc-diagnostics.html#effective-sample-size"><i class="fa fa-check"></i><b>3.1.2</b> Effective sample size</a></li>
+<li class="chapter" data-level="3.1.3" data-path="mcmc-diagnostics.html"><a href="mcmc-diagnostics.html#autocorrelation"><i class="fa fa-check"></i><b>3.1.3</b> Autocorrelation</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="mcmc-diagnostics.html"><a href="mcmc-diagnostics.html#diagnostics-for-the-no-u-turn-sampler"><i class="fa fa-check"></i><b>3.2</b> Diagnostics for the No-U-Turn Sampler</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="mcmc-diagnostics.html"><a href="mcmc-diagnostics.html#divergent-transitions"><i class="fa fa-check"></i><b>3.2.1</b> Divergent transitions</a></li>
+<li class="chapter" data-level="3.2.2" data-path="mcmc-diagnostics.html"><a href="mcmc-diagnostics.html#energy-and-bayesian-fraction-of-missing-information"><i class="fa fa-check"></i><b>3.2.2</b> Energy and Bayesian fraction of missing information</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>4</b> References</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesplot</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Bayesplot</h1>
+<h4 class="author"><em>Jonah Gabry</em></h4>
+<h4 class="date"><em>May 05, 2017</em></h4>
+</div>
+<div id="bayesplot-documentation" class="section level1 unnumbered">
+<h1>Bayesplot Documentation</h1>
+<p><img src="images/logo.png" width="166" style="display: block; margin: auto;" /></p>
+<p><strong>bayesplot</strong> is an R package providing an extensive library of plotting functions for use after fitting Bayesian models (typically with MCMC). Currently <strong>bayesplot</strong> offers a variety of plots of posterior draws, visual MCMC diagnostics, as well as graphical posterior predictive checking. Additional functionality (e.g. for forecasting/out-of-sample prediction and other inference-related tasks) will be added in future releases.</p>
+<p>The plots created by <strong>bayesplot</strong> are ggplot objects, which means that after a plot is created it can be further customized using the various functions for modifying ggplot objects provided by the <strong>ggplot2</strong> package.</p>
+<p>The idea behind <strong>bayesplot</strong> is not only to provide convenient functionality for users, but also a common set of functions that can be easily used by developers working on a variety of packages for Bayesian modeling, particularly (but not necessarily) those powered by <a href="https://github.com/stan-dev/rstan"><strong>RStan</strong></a>.</p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="posterior-predictive-checking.html" class="navigation navigation-next navigation-unique" aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    if (location.protocol !== "file:" && /^https?:/.test(script.src))
+      script.src  = script.src.replace(/^https?:/, '');
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
