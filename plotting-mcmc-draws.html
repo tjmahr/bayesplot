@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Bayesplot</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="Bayesplot">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Bayesplot" />
   <meta property="og:type" content="book" />
@@ -35,7 +34,6 @@
   <link rel="shortcut icon" href="images/logo-icon.png" type="image/x-icon">
 <link rel="prev" href="posterior-predictive-checking.html">
 <link rel="next" href="mcmc-diagnostics.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -93,6 +91,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -175,18 +174,18 @@ fit &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(
 ## 
 ## Estimates:
 ##             Median MAD_SD
-## (Intercept) 12.2   18.2  
+## (Intercept) 12.9   19.9  
 ## cyl         -0.1    1.1  
 ## disp         0.0    0.0  
 ## hp           0.0    0.0  
-## drat         0.8    1.7  
-## wt          -3.6    2.0  
-## qsec         0.8    0.7  
-## vs           0.3    2.2  
+## drat         0.8    1.6  
+## wt          -3.7    1.9  
+## qsec         0.8    0.8  
+## vs           0.3    2.1  
 ## am           2.5    2.1  
 ## gear         0.7    1.6  
-## carb        -0.3    0.9  
-## sigma        2.8    0.4  
+## carb        -0.2    0.8  
+## sigma        2.7    0.4  
 ## 
 ## Sample avg. posterior predictive 
 ## distribution of y (X = xbar):
@@ -289,8 +288,9 @@ fit &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(
         </div>
       </div>
 <a href="posterior-predictive-checking.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="mcmc-diagnostics.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="mcmc-diagnostics.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -333,7 +333,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);

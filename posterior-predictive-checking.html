@@ -6,9 +6,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Bayesplot</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="Bayesplot">
-  <meta name="generator" content="bookdown 0.3 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
   <meta property="og:title" content="Bayesplot" />
   <meta property="og:type" content="book" />
@@ -35,7 +34,6 @@
   <link rel="shortcut icon" href="images/logo-icon.png" type="image/x-icon">
 <link rel="prev" href="index.html">
 <link rel="next" href="plotting-mcmc-draws.html">
-
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -93,6 +91,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </head>
 
 <body>
+
 
 
   <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
@@ -191,16 +190,16 @@ fit_poisson &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(y ~<s
 ## ------
 ## 
 ## Estimates:
-##             Median       MAD_SD      
-## (Intercept)          3.1          0.0
-## roach1      6981864570.5   89317387.6
-## treatment           -0.5          0.0
-## senior              -0.4          0.0
+##             Median   MAD_SD  
+## (Intercept)      3.1      0.0
+## roach1      698289.2   8985.5
+## treatment       -0.5      0.0
+## senior          -0.4      0.0
 ## 
 ## Sample avg. posterior predictive 
 ## distribution of y (X = xbar):
 ##          Median MAD_SD
-## mean_PPD 25.6    0.4  
+## mean_PPD 25.7    0.4  
 ## 
 ## ------
 ## For info on the priors used see help(&#39;prior_summary.stanreg&#39;).</code></pre>
@@ -213,17 +212,17 @@ fit_poisson &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(y ~<s
 ## ------
 ## 
 ## Estimates:
-##                       Median        MAD_SD       
-## (Intercept)                     2.8           0.2
-## roach1                13037197704.8  2528791135.5
-## treatment                      -0.8           0.2
-## senior                         -0.3           0.3
-## reciprocal_dispersion           0.3           0.0
+##                       Median    MAD_SD   
+## (Intercept)                 2.8       0.2
+## roach1                1310997.5  241600.2
+## treatment                  -0.8       0.2
+## senior                     -0.3       0.2
+## reciprocal_dispersion       0.3       0.0
 ## 
 ## Sample avg. posterior predictive 
 ## distribution of y (X = xbar):
 ##          Median MAD_SD
-## mean_PPD 49.3   29.2  
+## mean_PPD 50.2   29.1  
 ## 
 ## ------
 ## For info on the priors used see help(&#39;prior_summary.stanreg&#39;).</code></pre>
@@ -267,681 +266,681 @@ y &lt;-<span class="st"> </span>roaches$y
 <pre><code>## [1] 0.3587786</code></pre>
 <p>Then we can use this function as the <code>stat</code> argument to <code>ppc_stat</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ppc_stat</span>(y, yrep_poisson, <span class="dt">stat =</span> <span class="st">&quot;prop_zero&quot;</span>)</code></pre></div>
-<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+<pre><code>## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
 <p><img src="bayesplot_files/figure-html/ppc_stat-1.png" width="672" /></p>
 <p>In the plot the dark line is at the value <span class="math inline">\(T(y)\)</span>, i.e. the value of the test statistic computed from the observed <span class="math inline">\(y\)</span>, in this case <code>prop_zero(y)</code>. It’s hard to see because almost all the datasets in <code>yrep</code> have no zeros, but the lighter bar is actually a histogram of the the proportion of zeros in each of the replicated datasets.</p>
 <p>Here’s the same plot for the negative binomial model:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ppc_stat</span>(y, yrep_nb, <span class="dt">stat =</span> <span class="st">&quot;prop_zero&quot;</span>)</code></pre></div>
-<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+<pre><code>## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
 <p><img src="bayesplot_files/figure-html/ppc_stat-nb-1.png" width="672" /></p>
 <p>Again we see that the negative binomial model does a much better job predicting the proportion of observed zeros than the Poisson.</p>
 <p>However, if we look instead at the distribution of the maximum value in the replications then we can see that the Poisson model makes more realistic predictions than the negative binomial:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ppc_stat</span>(y, yrep_poisson, <span class="dt">stat =</span> <span class="st">&quot;max&quot;</span>)</code></pre></div>
-<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+<pre><code>## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
 <p><img src="bayesplot_files/figure-html/ppc_stat-max-1.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ppc_stat</span>(y, yrep_nb, <span class="dt">stat =</span> <span class="st">&quot;max&quot;</span>)</code></pre></div>
-<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+<pre><code>## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
 <p><img src="bayesplot_files/figure-html/ppc_stat-max-2.png" width="672" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ppc_stat</span>(y, yrep_nb, <span class="dt">stat =</span> <span class="st">&quot;max&quot;</span>, <span class="dt">binwidth =</span> <span class="dv">100</span>) +
 <span class="st">  </span><span class="kw">coord_cartesian</span>(<span class="dt">xlim =</span> <span class="kw">c</span>(-<span class="dv">1</span>, <span class="dv">5000</span>))</code></pre></div>
-<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+<pre><code>## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
 <p><img src="bayesplot_files/figure-html/ppc_stat-max-3.png" width="672" /></p>
 </div>
@@ -983,138 +982,138 @@ y &lt;-<span class="st"> </span>roaches$y
 ##   ppc_violin_grouped</code></pre>
 <p>Many of the available PPCs can also be carried out within levels of a grouping variable. Any function for PPCs by group will have a name ending in <code>_grouped</code> and will accept an additional argument <code>group</code>. For example, <code>ppc_stat_grouped</code> is the same as <code>ppc_stat</code> except that the test statistics are computed within levels of the grouping variable and a separate plot is made for each level:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ppc_stat_grouped</span>(y, yrep_nb, <span class="dt">group =</span> roaches$treatment, <span class="dt">stat =</span> <span class="st">&quot;prop_zero&quot;</span>)</code></pre></div>
-<pre><code>## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+<pre><code>## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call(L_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
 ## font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
-<pre><code>## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+<pre><code>## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;
 
-## Warning in grid.Call.graphics(L_text, as.graphicsAnnot(x$label), x$x, x
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x
 ## $y, : font &quot;Symbol&quot; could not be found for family &quot;serif&quot;</code></pre>
 <p><img src="bayesplot_files/figure-html/ppc_stat_grouped-1.png" width="672" /></p>
 <p>The full list of currently available <code>_grouped</code> functions is:</p>
@@ -1170,8 +1169,9 @@ y &lt;-<span class="st"> </span>roaches$y
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="plotting-mcmc-draws.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
-
+<a href="plotting-mcmc-draws.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
@@ -1214,7 +1214,7 @@ gitbook.start({
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
-    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    script.src  = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:" && /^https?:/.test(script.src))
       script.src  = script.src.replace(/^https?:/, '');
     document.getElementsByTagName("head")[0].appendChild(script);
