@@ -41,17 +41,12 @@ also a common set of functions that can be easily used by developers working on 
 packages for Bayesian modeling, particularly (but not necessarily) those powered by
 [**RStan**](https://github.com/stan-dev/rstan).
 
-**RELATED PACKAGES**
-
-* [RStan](http://mc-stan.org/interfaces/rstan.html)
-* [RStanARM](http://mc-stan.org/interfaces/rstanarm.html)
-* [Loo](http://mc-stan.org/interfaces/loo.html)
-
 
 ## Installing and loading the package
 
 ### Installation
-* To install the Latest release:
+
+* To install the latest release from [CRAN](https://cran.r-project.org/package=bayesplot):
 
 ```{r, eval=FALSE}
 install.packages("bayesplot")
@@ -69,7 +64,7 @@ devtools::install_github("stan-dev/bayesplot")
 The examples in the rest of this documentation assume **bayesplot** has already 
 been installed using one of the methods above. 
 
-* To load the package:
+* To load the package after installation:
 
 ```{r}
 library("bayesplot")
