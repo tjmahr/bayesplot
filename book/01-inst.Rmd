@@ -1,0 +1,27 @@
+# Installing and loading the bayesplot package
+
+## Installation
+
+* To install the latest release from [CRAN](https://cran.r-project.org/package=bayesplot):
+
+```{r, eval=FALSE}
+install.packages("bayesplot")
+```
+
+* To install the development version from [GitHub](https://github.com/stan-dev/bayesplot) using the **devtools** package:
+
+```{r, eval=FALSE}
+install.packages("devtools") # if necessary
+devtools::install_github("stan-dev/bayesplot")
+```
+
+## Loading the package
+
+The examples in the rest of this documentation assume **bayesplot** has already
+been installed using one of the methods above.
+
+* To load the package after installation:
+
+```{r}
+library("bayesplot")
+```

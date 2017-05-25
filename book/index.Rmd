@@ -1,8 +1,10 @@
 ---
 title: "bayesplot"
+author: "Stan Development Team"
 date: "May 25, 2017"
 documentclass: book
 output:
+  bookdown::pdf_book: default
   bookdown::gitbook:
     config:
       sharing:
@@ -11,7 +13,6 @@ output:
         github: yes
         twitter: no
     css: style.css
-  bookdown::pdf_book: default
 github-repo: stan-dev/bayesplot
 favicon: images/logo-icon.png
 site: bookdown::bookdown_site
@@ -19,7 +20,7 @@ cover-image: images/logo.png
 url: https\://mc-stan.org/bayesplot/index.html
 ---
 
-# bayesplot Vignettes {-}
+# Bayesplot Vignettes {-}
 
 
 ```{r echo=FALSE, fig.align='center', out.width="33%"}
@@ -49,33 +50,3 @@ packages for Bayesian modeling, particularly (but not necessarily) those powered
 * [shinystan](http://mc-stan.org/interfaces/shinystan.html)
 * [loo](http://mc-stan.org/interfaces/loo.html)
 * [rstantools](http://mc-stan.org/interfaces/rstantools.html)
-
-
-## Installing and loading the bayesplot package
-
-### Installation
-
-* To install the latest release from [CRAN](https://cran.r-project.org/package=bayesplot):
-
-```{r, eval=FALSE}
-install.packages("bayesplot")
-```
-
-* To install the development version from [GitHub](https://github.com/stan-dev/bayesplot) using the **devtools** package:
-
-```{r, eval=FALSE}
-install.packages("devtools") # if necessary
-devtools::install_github("stan-dev/bayesplot")
-```
-
-### Loading the package
-
-The examples in the rest of this documentation assume **bayesplot** has already 
-been installed using one of the methods above. 
-
-* To load the package after installation:
-
-```{r}
-library("bayesplot")
-```
-
