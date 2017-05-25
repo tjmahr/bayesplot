@@ -1,13 +1,5 @@
 # Posterior Predictive Checking
 
-This vignette focuses on graphical posterior predictive checks (PPC). Plots of parameter estimates
-from MCMC draws are covered in the separate vignette
-[Plotting MCMC draws using the bayesplot package](MCMC.html),
-and MCMC diagnostics are covered in
-[Visual MCMC diagnostics using the bayesplot package](MCMC-diagnostics.html).
-
-## Overview
-
 The __bayesplot__ package provides various plotting functions for
 _graphical posterior predictive checking_, that is, creating graphical displays
 comparing observed data to simulated data from the posterior predictive
@@ -17,7 +9,8 @@ The idea behind posterior predictive checking is simple: if a model is a
 good fit then we should be able to use it to generate data that looks a lot like
 the data we observed.
 
-## Posterior predictive distribution
+### Posterior predictive distribution
+
 To generate the data used for posterior predictive checks (PPCs) we simulate
 from the _posterior predictive distribution_ The posterior predictive
 distribution is the distribution of the outcome variable implied by a model
@@ -44,7 +37,7 @@ from Gelman et. al. (2013) and is the notation used throughout the package
 documentation.
 
 
-## Graphical posterior predictive checks
+### Graphical posterior predictive checks
 
 Using the replicated datasets drawn from the posterior predictive
 distribution, the functions in the __bayesplot__ package create various
@@ -52,12 +45,16 @@ graphical displays comparing the observed data $y$ to the replications.
 The names of the __bayesplot__ plotting functions for posterior predictive
 checking all have the prefix `ppc_`.
 
-To demonstrate some of the various PPCs that can be created with the __bayesplot__
-package we'll use an example of comparing Poisson and Negative binomial
-regression models from the
+
+## Fitting some example models
+
+To demonstrate some of the various PPCs that can be created with the
+__bayesplot__ package we'll use an example of comparing Poisson and Negative
+binomial regression models from the
 [**rstanarm**](https://CRAN.R-project.org/package=rstanarm) package
 vignette [_stan_glm: GLMs for Count
-Data_](https://CRAN.R-project.org/package=rstanarm/vignettes/count.html) (Gabry and Goodrich, 2017).
+Data_](https://CRAN.R-project.org/package=rstanarm/vignettes/count.html) (Gabry 
+and Goodrich, 2017).
 
 > We want to make inferences about the efficacy of a certain pest management system at reducing the number of roaches in urban apartments. [...]
 The regression predictors for the model are the pre-treatment number of roaches `roach1`, the treatment indicator `treatment`, and a variable `senior` indicating whether the apartment is in a building restricted to elderly residents. Because the number of days for which the roach traps were used is not the same for all apartments in the sample, we include it as an exposure [...].
@@ -106,7 +103,7 @@ For each of the `yrep` matrices, every row is a draw from the posterior
 predictive distribution, i.e. a vector with one element
 for each of the data points in `y`.
 
-### Histograms and density estimates
+## Histograms and density estimates
 
 The first PPC we'll look at is a comparison of the distribution of `y` and the
 distributions of some of the simulated datasets (rows) in the `yrep` matrix.
@@ -152,7 +149,7 @@ ppc_hist(y, yrep_nb[1:5, ], binwidth = 20) +
 ```
 
 
-### Distributions of test statistics
+## Distributions of test statistics
 
 Another way to see that the Poisson model predicts too few zeros is to use the
 `ppc_stat` function to look at the distribution of the proportion of zeros over
@@ -199,7 +196,7 @@ ppc_stat(y, yrep_nb, stat = "max", binwidth = 100) +
   coord_cartesian(xlim = c(-1, 5000))
 ```
 
-### Other PPCs and PPCs by group
+## Other PPCs and PPCs by group
 
 There are many additional PPCs available, including plots of predictive
 intervals, distributions of predictive errors, and more. For links to the

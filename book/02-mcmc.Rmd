@@ -7,7 +7,7 @@ and graphical posterior predictive checks are covered in
 [Graphical posterior predictive checks using the bayesplot package](PPC.html).
 
 
-## Plots for MCMC draws
+## Fitting an example model
 
 The **bayesplot** package provides various plotting functions for visualizing
 Markov chain Monte Carlo (MCMC) draws from the posterior distribution of the
@@ -55,7 +55,7 @@ dim(posterior)
 dimnames(posterior)
 ```
 
-### Interval estimates
+## Interval estimates
 
 Posterior intervals for the parameters can be plotted using the `mcmc_intervals`
 function.
@@ -86,13 +86,11 @@ mcmc_areas(
 ```
 
 
-### Histograms and density estimates
+## Histograms and density estimates
 
 Histograms or kernel density estimates of posterior distributions of the various
 model parameters can be visualized using the functions described on the
 `MCMC-distributions` page in the **bayesplot** documentation.
-
-#### Histograms
 
 The `mcmc_hist` and `mcmc_dens` functions plot posterior distributions (combining all chains):
 
@@ -117,7 +115,7 @@ each chain as violins with horizontal lines at user-specified quantiles:
 mcmc_violin(posterior, pars = c("wt", "am"), probs = c(0.1, 0.5, 0.9))
 ```
 
-### Scatterplots
+## Scatterplots
 
 The `mcmc_scatter` function creates a scatterplot with two parameters:
 
@@ -137,7 +135,7 @@ an `mcmc_pairs` function for creating pairs plots with more than two parameters
 is available. Examples will eventually be included in this vignette. For now
 see `help("mcmc_pairs")`.
 
-### Traceplots
+## Traceplots
 
 The `mcmc_trace` function creates standard traceplots:
 
