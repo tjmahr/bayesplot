@@ -24,7 +24,7 @@
 
 
 
-<meta name="date" content="2017-05-05">
+<meta name="date" content="2017-05-25">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -100,7 +100,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <ul class="summary">
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>bayesplot Vignettes</a><ul>
-<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#installing-and-loading-the-package"><i class="fa fa-check"></i><b>0.1</b> Installing and loading the package</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#installing-and-loading-the-bayesplot-package"><i class="fa fa-check"></i><b>0.1</b> Installing and loading the bayesplot package</a><ul>
 <li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>0.1.1</b> Installation</a></li>
 <li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#loading-the-package"><i class="fa fa-check"></i><b>0.1.2</b> Loading the package</a></li>
 </ul></li>
@@ -233,7 +233,7 @@ model {
 schools_mod2 &lt;-<span class="st"> </span><span class="kw">stan_model</span>(<span class="st">&quot;schools_mod2.stan&quot;</span>)</code></pre></div>
 <p>We then fit the model by calling Stan’s MCMC algorithm using the <code>sampling</code> function,</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit1 &lt;-<span class="st"> </span><span class="kw">sampling</span>(schools_mod1, <span class="dt">data =</span> schools_dat)</code></pre></div>
-<pre><code>## Warning: There were 113 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See
+<pre><code>## Warning: There were 153 divergent transitions after warmup. Increasing adapt_delta above 0.8 may help. See
 ## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</code></pre>
 <pre><code>## Warning: There were 3 chains where the estimated Bayesian Fraction of Missing Information was low. See
 ## http://mc-stan.org/misc/warnings.html#bfmi-low</code></pre>
@@ -257,9 +257,9 @@ posterior2 &lt;-<span class="st"> </span><span class="kw">as.array</span>(fit2)<
 rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 <span class="kw">print</span>(rhats)</code></pre></div>
 <pre><code>##        mu       tau  theta[1]  theta[2]  theta[3]  theta[4]  theta[5] 
-## 1.0397188 1.4742498 1.1521600 1.0845779 1.1769277 1.0106879 1.1373311 
+## 1.0113792 1.0691164 1.0331032 1.0250264 0.9859601 0.9892713 0.9627740 
 ##  theta[6]  theta[7]  theta[8]      lp__ 
-## 1.0377028 0.9921015 0.9924823 1.6870040</code></pre>
+## 1.0646305 1.0708169 1.0349409 1.0563235</code></pre>
 <p>We can visualize the <span class="math inline">\(\hat{R}\)</span> values with the <code>mcmc_rhat</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;brightblue&quot;</span>) <span class="co"># see help(&quot;color_scheme_set&quot;)</span>
 <span class="kw">mcmc_rhat</span>(rhats)</code></pre></div>
@@ -281,9 +281,9 @@ rhats &lt;-<span class="st"> </span><span class="kw">rhat</span>(fit1_50iter)
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ratios1 &lt;-<span class="st"> </span><span class="kw">neff_ratio</span>(fit1)
 <span class="kw">print</span>(ratios1)</code></pre></div>
 <pre><code>##         mu        tau   theta[1]   theta[2]   theta[3]   theta[4] 
-## 0.14664827 0.04633138 0.19111723 0.27533101 0.24944774 0.27009015 
+## 0.16337394 0.04708919 0.17197216 0.28260580 0.24750849 0.27205501 
 ##   theta[5]   theta[6]   theta[7]   theta[8]       lp__ 
-## 0.21308196 0.24784275 0.17288347 0.29981891 0.02297139</code></pre>
+## 0.20987313 0.26225582 0.10780963 0.28150330 0.02732387</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_neff</span>(ratios1)</code></pre></div>
 <p><img src="bayesplot_files/figure-html/print-neff-ratios-1.png" width="672" /></p>
 <p>In the plot, the points representing the values of <span class="math inline">\(n_{eff}/N\)</span> are colored based on whether they are less than <span class="math inline">\(0.1\)</span>, between <span class="math inline">\(0.1\)</span> and <span class="math inline">\(0.5\)</span>, or greater than <span class="math inline">\(0.5\)</span>. These particular values are arbitrary in that they have no particular theoretical meaning, but a useful heuristic is to worry about any <span class="math inline">\(n_{eff}/N\)</span> less than <span class="math inline">\(0.1\)</span>.</p>
@@ -334,21 +334,21 @@ neff2 &lt;-<span class="st"> </span><span class="kw">neff_ratio</span>(fit2, <sp
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lp1 &lt;-<span class="st"> </span><span class="kw">log_posterior</span>(fit1)
 <span class="kw">head</span>(lp1)</code></pre></div>
 <pre><code>##   Iteration     Value Chain
-## 1         1 -14.64773     1
-## 2         2 -13.18693     1
-## 3         3 -15.96080     1
-## 4         4 -14.93688     1
-## 5         5 -18.29468     1
-## 6         6 -18.59472     1</code></pre>
+## 1         1 -19.06974     1
+## 2         2 -20.97032     1
+## 3         3 -22.06781     1
+## 4         4 -21.86754     1
+## 5         5 -17.51362     1
+## 6         6 -19.78462     1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">np1 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit1)
 <span class="kw">head</span>(np1)</code></pre></div>
 <pre><code>##   Iteration     Parameter     Value Chain
-## 1         1 accept_stat__ 0.9602775     1
-## 2         2 accept_stat__ 0.8628634     1
-## 3         3 accept_stat__ 0.9612577     1
-## 4         4 accept_stat__ 0.9547874     1
-## 5         5 accept_stat__ 0.9446888     1
-## 6         6 accept_stat__ 0.8827422     1</code></pre>
+## 1         1 accept_stat__ 0.9794378     1
+## 2         2 accept_stat__ 0.8902801     1
+## 3         3 accept_stat__ 0.9994125     1
+## 4         4 accept_stat__ 1.0000000     1
+## 5         5 accept_stat__ 0.9914364     1
+## 6         6 accept_stat__ 0.9798824     1</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># for the second model</span>
 lp2 &lt;-<span class="st"> </span><span class="kw">log_posterior</span>(fit2)
 np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</code></pre></div>
@@ -375,7 +375,7 @@ np2 &lt;-<span class="st"> </span><span class="kw">nuts_params</span>(fit2)</cod
 <p>but we have far fewer of them to worry about. If there are only a few divergences we can often get rid of them by increasing the target acceptance rate (<code>adapt_delta</code>), which has the effect of lowering the stepsize used by the sampler and allowing the Markov chains to explore more complicated curvature in the target distribution.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fit1b &lt;-<span class="st"> </span><span class="kw">sampling</span>(schools_mod1, <span class="dt">data =</span> schools_dat,
                   <span class="dt">control =</span> <span class="kw">list</span>(<span class="dt">adapt_delta =</span> <span class="fl">0.99</span>))</code></pre></div>
-<pre><code>## Warning: There were 2 divergent transitions after warmup. Increasing adapt_delta above 0.99 may help. See
+<pre><code>## Warning: There were 24 divergent transitions after warmup. Increasing adapt_delta above 0.99 may help. See
 ## http://mc-stan.org/misc/warnings.html#divergent-transitions-after-warmup</code></pre>
 <pre><code>## Warning: There were 4 chains where the estimated Bayesian Fraction of Missing Information was low. See
 ## http://mc-stan.org/misc/warnings.html#bfmi-low</code></pre>

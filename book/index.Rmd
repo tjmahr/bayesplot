@@ -1,28 +1,28 @@
 ---
 title: "bayesplot"
-# author: ["Jonah Gabry"]
-date: "May 05, 2017"
-url: 'https\://mc-stan.org/bayesplot/index.html'
-github-repo: "stan-dev/bayesplot"
-cover-image: "images/logo.png"
-favicon: "images/logo-icon.png"
-site: bookdown::bookdown_site
+date: "May 25, 2017"
 documentclass: book
 output:
-  bookdown::pdf_book: default
   bookdown::gitbook:
-    css: style.css
     config:
       sharing:
+        all: no
+        facebook: no
         github: yes
         twitter: no
-        facebook: no
-        all: no
+    css: style.css
+  bookdown::pdf_book: default
+github-repo: stan-dev/bayesplot
+favicon: images/logo-icon.png
+site: bookdown::bookdown_site
+cover-image: images/logo.png
+url: https\://mc-stan.org/bayesplot/index.html
 ---
 
 # bayesplot Vignettes {-}
 
-```{r echo=FALSE, fig.align='center'}
+
+```{r echo=FALSE, fig.align='center', out.width="33%"}
 knitr::include_graphics("images/logo.png")
 ```
 
@@ -42,7 +42,16 @@ packages for Bayesian modeling, particularly (but not necessarily) those powered
 [**RStan**](https://github.com/stan-dev/rstan).
 
 
-## Installing and loading the package
+**Other R packages from the Stan Development Team:**
+
+* [rstan](http://mc-stan.org/interfaces/rstan.html)
+* [rstanarm](http://mc-stan.org/interfaces/rstanarm.html)
+* [shinystan](http://mc-stan.org/interfaces/shinystan.html)
+* [loo](http://mc-stan.org/interfaces/loo.html)
+* [rstantools](http://mc-stan.org/interfaces/rstantools.html)
+
+
+## Installing and loading the bayesplot package
 
 ### Installation
 
