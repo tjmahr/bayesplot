@@ -136,3 +136,26 @@
 	color: #FFFFFF;
 	font-weight: bold;
 }
+
+/* Custom Blocks */
+
+.rmddanger, .rmdwarning, .rmdsuccess, .rmdinfo, .rmdnote {
+  padding: 1em 4em 1em 4em;
+  margin-bottom: 10px;
+  background: 5px center/3em no-repeat;
+}
+.rmddanger {
+  background: #fdefee;
+}
+.rmdwarning {
+  background: #fef4e6;
+}
+.rmdsuccess {
+  background: #eff9ef;
+}
+.rmdinfo {
+  background: #edf6f9;
+}
+.rmdnote {
+  background: #f1f2f3;
+}

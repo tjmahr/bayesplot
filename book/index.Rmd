@@ -22,7 +22,7 @@ url: https\://mc-stan.org/bayesplot/index.html
 
 # Bayesplot Vignettes {-}
 
-```{r child = "knitr-settings.Rmd"}
+```{r child = "knitr-settings.Rmd", echo=FALSE}
 ```
 
 ```{r echo=FALSE, fig.align='center', out.width="33%"}
