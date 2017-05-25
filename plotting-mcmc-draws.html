@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Bayesplot</title>
-  <meta name="description" content="Bayesplot">
+  <title>bayesplot</title>
+  <meta name="description" content="bayesplot">
   <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Bayesplot" />
+  <meta property="og:title" content="bayesplot" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mc-stan.org/bayesplot/index.html" />
   <meta property="og:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
@@ -17,12 +17,11 @@
   <meta name="github-repo" content="stan-dev/bayesplot" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bayesplot" />
+  <meta name="twitter:title" content="bayesplot" />
   
   
   <meta name="twitter:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
 
-<meta name="author" content="Jonah Gabry">
 
 
 <meta name="date" content="2017-05-05">
@@ -100,7 +99,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bayesplot Documentation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>bayesplot Vignettes</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#installing-and-loading-the-package"><i class="fa fa-check"></i><b>0.1</b> Installing and loading the package</a><ul>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>0.1.1</b> Installation</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#loading-the-package"><i class="fa fa-check"></i><b>0.1.2</b> Loading the package</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html"><i class="fa fa-check"></i><b>1</b> Posterior Predictive Checking</a><ul>
 <li class="chapter" data-level="1.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
 <li class="chapter" data-level="1.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#posterior-predictive-distribution"><i class="fa fa-check"></i><b>1.2</b> Posterior predictive distribution</a></li>
@@ -143,7 +147,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesplot</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">bayesplot</a>
           </h1>
         </div>
 
@@ -168,8 +172,9 @@ fit &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(
 )
 <span class="kw">print</span>(fit)</code></pre></div>
 <pre><code>## stan_glm
-##  family:  gaussian [identity]
-##  formula: mpg ~ .
+##  family:   gaussian [identity]
+##  formula:  mpg ~ .
+##  num. obs: 32
 ## ------
 ## 
 ## Estimates:

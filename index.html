@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Bayesplot</title>
-  <meta name="description" content="Bayesplot">
+  <title>bayesplot</title>
+  <meta name="description" content="bayesplot">
   <meta name="generator" content="bookdown 0.4 and GitBook 2.6.7">
 
-  <meta property="og:title" content="Bayesplot" />
+  <meta property="og:title" content="bayesplot" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://mc-stan.org/bayesplot/index.html" />
   <meta property="og:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
@@ -17,12 +17,11 @@
   <meta name="github-repo" content="stan-dev/bayesplot" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Bayesplot" />
+  <meta name="twitter:title" content="bayesplot" />
   
   
   <meta name="twitter:image" content="https://mc-stan.org/bayesplot/index.htmlimages/logo.png" />
 
-<meta name="author" content="Jonah Gabry">
 
 
 <meta name="date" content="2017-05-05">
@@ -100,7 +99,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Bayesplot Documentation</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>bayesplot Vignettes</a><ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#installing-and-loading-the-package"><i class="fa fa-check"></i><b>0.1</b> Installing and loading the package</a><ul>
+<li class="chapter" data-level="0.1.1" data-path="index.html"><a href="index.html#installation"><i class="fa fa-check"></i><b>0.1.1</b> Installation</a></li>
+<li class="chapter" data-level="0.1.2" data-path="index.html"><a href="index.html#loading-the-package"><i class="fa fa-check"></i><b>0.1.2</b> Loading the package</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html"><i class="fa fa-check"></i><b>1</b> Posterior Predictive Checking</a><ul>
 <li class="chapter" data-level="1.1" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#overview"><i class="fa fa-check"></i><b>1.1</b> Overview</a></li>
 <li class="chapter" data-level="1.2" data-path="posterior-predictive-checking.html"><a href="posterior-predictive-checking.html#posterior-predictive-distribution"><i class="fa fa-check"></i><b>1.2</b> Posterior predictive distribution</a></li>
@@ -143,7 +147,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Bayesplot</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">bayesplot</a>
           </h1>
         </div>
 
@@ -152,13 +156,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Bayesplot</h1>
-<h4 class="author"><em>Jonah Gabry</em></h4>
+<h1 class="title">bayesplot</h1>
 <h4 class="date"><em>May 05, 2017</em></h4>
 </div>
-<div id="bayesplot-documentation" class="section level1 unnumbered">
-<h1>Bayesplot Documentation</h1>
-<p><img src="images/logo.png" width="166" style="display: block; margin: auto;" /></p>
+<div id="bayesplot-vignettes" class="section level1 unnumbered">
+<h1>bayesplot Vignettes</h1>
+<p><img src="images/logo.png" style="display: block; margin: auto;" /></p>
 <p><strong>bayesplot</strong> is an R package providing an extensive library of plotting functions for use after fitting Bayesian models (typically with MCMC). Currently <strong>bayesplot</strong> offers a variety of plots of posterior draws, visual MCMC diagnostics, as well as graphical posterior predictive checking. Additional functionality (e.g. for forecasting/out-of-sample prediction and other inference-related tasks) will be added in future releases.</p>
 <p>The plots created by <strong>bayesplot</strong> are ggplot objects, which means that after a plot is created it can be further customized using the various functions for modifying ggplot objects provided by the <strong>ggplot2</strong> package.</p>
 <p>The idea behind <strong>bayesplot</strong> is not only to provide convenient functionality for users, but also a common set of functions that can be easily used by developers working on a variety of packages for Bayesian modeling, particularly (but not necessarily) those powered by <a href="https://github.com/stan-dev/rstan"><strong>RStan</strong></a>.</p>
@@ -168,7 +171,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="http://mc-stan.org/interfaces/rstanarm.html">RStanARM</a></li>
 <li><a href="http://mc-stan.org/interfaces/loo.html">Loo</a></li>
 </ul>
+<div id="installing-and-loading-the-package" class="section level2">
+<h2><span class="header-section-number">0.1</span> Installing and loading the package</h2>
+<div id="installation" class="section level3">
+<h3><span class="header-section-number">0.1.1</span> Installation</h3>
+<ul>
+<li>To install the Latest release:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;bayesplot&quot;</span>)</code></pre></div>
+<ul>
+<li>To install the development version from <a href="https://github.com/stan-dev/bayesplot">GitHub</a> using the <strong>devtools</strong> package:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>) <span class="co"># if necessary</span>
+devtools::<span class="kw">install_github</span>(<span class="st">&quot;stan-dev/bayesplot&quot;</span>)</code></pre></div>
+</div>
+<div id="loading-the-package" class="section level3">
+<h3><span class="header-section-number">0.1.2</span> Loading the package</h3>
+<p>The examples in the rest of this documentation assume <strong>bayesplot</strong> has already been installed using one of the methods above.</p>
+<ul>
+<li>To load the package:</li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;bayesplot&quot;</span>)</code></pre></div>
 
+</div>
+</div>
 </div>
             </section>
 

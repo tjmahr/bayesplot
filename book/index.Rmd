@@ -1,6 +1,6 @@
 ---
-title: "Bayesplot"
-author: ["Jonah Gabry"]
+title: "bayesplot"
+# author: ["Jonah Gabry"]
 date: "May 05, 2017"
 url: 'https\://mc-stan.org/bayesplot/index.html'
 github-repo: "stan-dev/bayesplot"
@@ -20,7 +20,7 @@ output:
         all: no
 ---
 
-# Bayesplot Documentation {-}
+# bayesplot Vignettes {-}
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/logo.png")
@@ -46,3 +46,32 @@ packages for Bayesian modeling, particularly (but not necessarily) those powered
 * [RStan](http://mc-stan.org/interfaces/rstan.html)
 * [RStanARM](http://mc-stan.org/interfaces/rstanarm.html)
 * [Loo](http://mc-stan.org/interfaces/loo.html)
+
+
+## Installing and loading the package
+
+### Installation
+* To install the Latest release:
+
+```{r, eval=FALSE}
+install.packages("bayesplot")
+```
+
+* To install the development version from [GitHub](https://github.com/stan-dev/bayesplot) using the **devtools** package:
+
+```{r, eval=FALSE}
+install.packages("devtools") # if necessary
+devtools::install_github("stan-dev/bayesplot")
+```
+
+### Loading the package
+
+The examples in the rest of this documentation assume **bayesplot** has already 
+been installed using one of the methods above. 
+
+* To load the package:
+
+```{r}
+library("bayesplot")
+```
+
