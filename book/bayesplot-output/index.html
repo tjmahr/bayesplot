@@ -160,6 +160,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="bayesplot-vignettes" class="section level1 unnumbered">
 <h1>Bayesplot Vignettes</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::opts_chunk$<span class="kw">set</span>(
+  <span class="dt">dev =</span> <span class="st">&quot;png&quot;</span>,
+  <span class="dt">dpi =</span> <span class="dv">150</span>,
+  <span class="dt">fig.asp =</span> <span class="fl">0.618</span>,
+  <span class="dt">fig.width =</span> <span class="dv">5</span>,
+  <span class="dt">out.width =</span> <span class="st">&quot;60%&quot;</span>,
+  <span class="dt">fig.align =</span> <span class="st">&quot;center&quot;</span>,
+  <span class="dt">comment =</span> <span class="ot">NA</span>
+)</code></pre></div>
 <p><img src="images/logo.png" width="33%" style="display: block; margin: auto;" /></p>
 <p><strong>bayesplot</strong> is an R package providing an extensive library of plotting functions for use after fitting Bayesian models (typically with MCMC). Currently <strong>bayesplot</strong> offers a variety of plots of posterior draws, visual MCMC diagnostics, as well as graphical posterior predictive checking. Additional functionality (e.g. for forecasting/out-of-sample prediction and other inference-related tasks) will be added in future releases.</p>
 <p>The plots created by <strong>bayesplot</strong> are ggplot objects, which means that after a plot is created it can be further customized using the various functions for modifying ggplot objects provided by the <strong>ggplot2</strong> package.</p>

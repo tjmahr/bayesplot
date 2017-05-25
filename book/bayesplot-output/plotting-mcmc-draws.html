@@ -169,48 +169,48 @@ fit &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(
   <span class="dt">seed =</span> <span class="dv">1111</span>
 )
 <span class="kw">print</span>(fit)</code></pre></div>
-<pre><code>## stan_glm
-##  family:  gaussian [identity]
-##  formula: mpg ~ .
-## ------
-## 
-## Estimates:
-##             Median MAD_SD
-## (Intercept) 12.9   19.9  
-## cyl         -0.1    1.1  
-## disp         0.0    0.0  
-## hp           0.0    0.0  
-## drat         0.8    1.6  
-## wt          -3.7    1.9  
-## qsec         0.8    0.8  
-## vs           0.3    2.1  
-## am           2.5    2.1  
-## gear         0.7    1.6  
-## carb        -0.2    0.8  
-## sigma        2.7    0.4  
-## 
-## Sample avg. posterior predictive 
-## distribution of y (X = xbar):
-##          Median MAD_SD
-## mean_PPD 20.1    0.7  
-## 
-## ------
-## For info on the priors used see help(&#39;prior_summary.stanreg&#39;).</code></pre>
+<pre><code>stan_glm
+ family:  gaussian [identity]
+ formula: mpg ~ .
+------
+
+Estimates:
+            Median MAD_SD
+(Intercept) 12.9   19.9  
+cyl         -0.1    1.1  
+disp         0.0    0.0  
+hp           0.0    0.0  
+drat         0.8    1.6  
+wt          -3.7    1.9  
+qsec         0.8    0.8  
+vs           0.3    2.1  
+am           2.5    2.1  
+gear         0.7    1.6  
+carb        -0.2    0.8  
+sigma        2.7    0.4  
+
+Sample avg. posterior predictive 
+distribution of y (X = xbar):
+         Median MAD_SD
+mean_PPD 20.1    0.7  
+
+------
+For info on the priors used see help(&#39;prior_summary.stanreg&#39;).</code></pre>
 <p>To use the posterior draws with the functions in the <strong>bayesplot</strong> package we’ll extract them from the fitted model object:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">posterior &lt;-<span class="st"> </span><span class="kw">as.array</span>(fit)
 <span class="kw">dim</span>(posterior)</code></pre></div>
-<pre><code>## [1] 1000    4   12</code></pre>
+<pre><code>[1] 1000    4   12</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dimnames</span>(posterior)</code></pre></div>
-<pre><code>## $iterations
-## NULL
-## 
-## $chains
-## [1] &quot;chain:1&quot; &quot;chain:2&quot; &quot;chain:3&quot; &quot;chain:4&quot;
-## 
-## $parameters
-##  [1] &quot;(Intercept)&quot; &quot;cyl&quot;         &quot;disp&quot;        &quot;hp&quot;          &quot;drat&quot;       
-##  [6] &quot;wt&quot;          &quot;qsec&quot;        &quot;vs&quot;          &quot;am&quot;          &quot;gear&quot;       
-## [11] &quot;carb&quot;        &quot;sigma&quot;</code></pre>
+<pre><code>$iterations
+NULL
+
+$chains
+[1] &quot;chain:1&quot; &quot;chain:2&quot; &quot;chain:3&quot; &quot;chain:4&quot;
+
+$parameters
+ [1] &quot;(Intercept)&quot; &quot;cyl&quot;         &quot;disp&quot;        &quot;hp&quot;          &quot;drat&quot;       
+ [6] &quot;wt&quot;          &quot;qsec&quot;        &quot;vs&quot;          &quot;am&quot;          &quot;gear&quot;       
+[11] &quot;carb&quot;        &quot;sigma&quot;      </code></pre>
 </div>
 <div id="interval-estimates" class="section level2">
 <h2><span class="header-section-number">3.2</span> Interval estimates</h2>
@@ -218,7 +218,7 @@ fit &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&quot;bayesplot&quot;</span>)
 <span class="kw">color_scheme_set</span>(<span class="st">&quot;red&quot;</span>)
 <span class="kw">mcmc_intervals</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;cyl&quot;</span>, <span class="st">&quot;drat&quot;</span>, <span class="st">&quot;am&quot;</span>, <span class="st">&quot;sigma&quot;</span>))</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_intervals-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_intervals-1.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>The default is to show 50% intervals (the thick lines) and 90% intervals (the thinner outer lines). These defaults can be changed using the <code>prob</code> and <code>prob_outer</code> arguments, respectively. The points in the above plot are posterior medians. The <code>point_est</code> argument can be used to select posterior means instead or to omit the point estimates.</p>
 <p>To show the uncertainty intervals as shaded areas under the estimated posterior density curves we can use the <code>mcmc_areas</code> function:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_areas</span>(
@@ -228,7 +228,7 @@ fit &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(
   <span class="dt">prob_outer =</span> <span class="fl">0.99</span>, <span class="co"># 99%</span>
   <span class="dt">point_est =</span> <span class="st">&quot;mean&quot;</span>
 )</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_areas-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_areas-1.png" width="60%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="histograms-and-density-estimates-1" class="section level2">
 <h2><span class="header-section-number">3.3</span> Histograms and density estimates</h2>
@@ -236,28 +236,28 @@ fit &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(
 <p>The <code>mcmc_hist</code> and <code>mcmc_dens</code> functions plot posterior distributions (combining all chains):</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;green&quot;</span>)
 <span class="kw">mcmc_hist</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;wt&quot;</span>, <span class="st">&quot;am&quot;</span>))</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_hist-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_hist-1.png" width="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_dens</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;wt&quot;</span>, <span class="st">&quot;am&quot;</span>))</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_hist-2.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_hist-2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>To view the four Markov chain separately we can use <code>mcmc_hist_by_chain</code>, <code>mcmc_dens_overlay</code>:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;brightblue&quot;</span>)
 <span class="kw">mcmc_hist_by_chain</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;wt&quot;</span>, <span class="st">&quot;am&quot;</span>))</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_hist_by_chain-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_hist_by_chain-1.png" width="60%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_dens_overlay</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;wt&quot;</span>, <span class="st">&quot;am&quot;</span>))</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_hist_by_chain-2.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_hist_by_chain-2.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>The <code>mcmc_violin</code> function also plots the density estimates of each chain as violins with horizontal lines at user-specified quantiles:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_violin</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;wt&quot;</span>, <span class="st">&quot;am&quot;</span>), <span class="dt">probs =</span> <span class="kw">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>))</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_violin-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_violin-1.png" width="60%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="scatterplots" class="section level2">
 <h2><span class="header-section-number">3.4</span> Scatterplots</h2>
 <p>The <code>mcmc_scatter</code> function creates a scatterplot with two parameters:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;gray&quot;</span>)
 <span class="kw">mcmc_scatter</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;(Intercept)&quot;</span>, <span class="st">&quot;wt&quot;</span>), <span class="dt">size =</span> <span class="fl">1.5</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_scatter-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_scatter-1.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>The <code>mcmc_hex</code> function creates a similar plot but using hexagonal binning, which can be useful to avoid overplotting:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_hex</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;(Intercept)&quot;</span>, <span class="st">&quot;wt&quot;</span>))</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_hex-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_hex-1.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>In addition to <code>mcmc_scatter</code> and <code>mcmc_hex</code>, as of <strong>bayesplot</strong> version 1.2.0 an <code>mcmc_pairs</code> function for creating pairs plots with more than two parameters is available. Examples will eventually be included in this vignette. For now see <code>help(&quot;mcmc_pairs&quot;)</code>.</p>
 </div>
 <div id="traceplots" class="section level2">
@@ -265,19 +265,19 @@ fit &lt;-<span class="st"> </span><span class="kw">stan_glm</span>(
 <p>The <code>mcmc_trace</code> function creates standard traceplots:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;blue&quot;</span>)
 <span class="kw">mcmc_trace</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;wt&quot;</span>, <span class="st">&quot;sigma&quot;</span>))</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_trace_mcmc-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_trace_mcmc-1.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>If it’s hard to see the difference between the chains we can change to a mixed color scheme, for example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;mix-blue-red&quot;</span>)
 <span class="kw">mcmc_trace</span>(posterior, <span class="dt">pars =</span> <span class="kw">c</span>(<span class="st">&quot;wt&quot;</span>, <span class="st">&quot;sigma&quot;</span>),
            <span class="dt">facet_args =</span> <span class="kw">list</span>(<span class="dt">ncol =</span> <span class="dv">1</span>, <span class="dt">strip.position =</span> <span class="st">&quot;left&quot;</span>))</code></pre></div>
-<p><img src="bayesplot_files/figure-html/change-scheme-1.png" width="672" /> The code above also illustrates the use of the <code>facet_args</code> argument, which is a list of parameters passed to <code>facet_wrap</code> in <strong>ggplot2</strong>. Specifying <code>ncol=1</code> means the traceplots will be stacked in a single column rather than placed side by side, and <code>strip.position=&quot;left&quot;</code> moves the facet labels to the y-axis (instead of above each facet).</p>
+<p><img src="bayesplot_files/figure-html/change-scheme-1.png" width="60%" style="display: block; margin: auto;" /> The code above also illustrates the use of the <code>facet_args</code> argument, which is a list of parameters passed to <code>facet_wrap</code> in <strong>ggplot2</strong>. Specifying <code>ncol=1</code> means the traceplots will be stacked in a single column rather than placed side by side, and <code>strip.position=&quot;left&quot;</code> moves the facet labels to the y-axis (instead of above each facet).</p>
 <p>The <a href="https://CRAN.R-project.org/package=viridis"><code>&quot;viridis&quot;</code> color scheme</a> is also useful for traceplots because it is comprised of very distinct colors:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">color_scheme_set</span>(<span class="st">&quot;viridis&quot;</span>)
 <span class="kw">mcmc_trace</span>(posterior, <span class="dt">pars =</span> <span class="st">&quot;(Intercept)&quot;</span>)</code></pre></div>
-<p><img src="bayesplot_files/figure-html/viridis-scheme-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/viridis-scheme-1.png" width="60%" style="display: block; margin: auto;" /></p>
 <p>The <code>mcmc_trace_highlight</code> function uses points instead of lines and reduces the opacity of all but a single chain (which is specified using the <code>highlight</code> argument).</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mcmc_trace_highlight</span>(posterior, <span class="dt">pars =</span> <span class="st">&quot;sigma&quot;</span>, <span class="dt">highlight =</span> <span class="dv">3</span>)</code></pre></div>
-<p><img src="bayesplot_files/figure-html/mcmc_trace_highlight-1.png" width="672" /></p>
+<p><img src="bayesplot_files/figure-html/mcmc_trace_highlight-1.png" width="60%" style="display: block; margin: auto;" /></p>
 
 </div>
 </div>

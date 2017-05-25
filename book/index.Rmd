@@ -22,6 +22,8 @@ url: https\://mc-stan.org/bayesplot/index.html
 
 # Bayesplot Vignettes {-}
 
+```{r child = "knitr-settings.Rmd"}
+```
 
 ```{r echo=FALSE, fig.align='center', out.width="33%"}
 knitr::include_graphics("images/logo.png")
