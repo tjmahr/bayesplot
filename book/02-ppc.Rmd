@@ -9,7 +9,7 @@ The idea behind posterior predictive checking is simple: if a model is a
 good fit then we should be able to use it to generate data that looks a lot like
 the data we observed.
 
-### Posterior predictive distribution
+## Posterior predictive distribution
 
 To generate the data used for posterior predictive checks (PPCs) we simulate
 from the _posterior predictive distribution_ The posterior predictive
@@ -37,7 +37,7 @@ from Gelman et. al. (2013) and is the notation used throughout the package
 documentation.
 
 
-### Graphical posterior predictive checks
+## Graphical posterior predictive checks
 
 Using the replicated datasets drawn from the posterior predictive
 distribution, the functions in the __bayesplot__ package create various
@@ -53,7 +53,7 @@ __bayesplot__ package we'll use an example of comparing Poisson and Negative
 binomial regression models from the
 [**rstanarm**](https://CRAN.R-project.org/package=rstanarm) package
 vignette [_stan_glm: GLMs for Count
-Data_](https://CRAN.R-project.org/package=rstanarm/vignettes/count.html) (Gabry 
+Data_](https://CRAN.R-project.org/package=rstanarm/vignettes/count.html) (Gabry
 and Goodrich, 2017).
 
 > We want to make inferences about the efficacy of a certain pest management system at reducing the number of roaches in urban apartments. [...]
