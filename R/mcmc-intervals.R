@@ -12,11 +12,12 @@
 #' @template args-transformations
 #' @param ... Currently unused.
 #' @param prob The probability mass to include in the inner interval (for
-#'   \code{mcmc_intervals}) or in the shaded region (for \code{mcmc_areas}). The
-#'   default is \code{0.5} (50\% interval).
+#'   \code{mcmc_intervals}) or in the shaded region (for \code{mcmc_areas},
+#'   \code{mcmc_joy}). The default is \code{0.5} for \code{mcmc_intervals} and
+#'   \code{mcmc_areas} and \code{0.8} for \code{mcmc_joy}.
 #' @param prob_outer The probability mass to include in the outer interval. The
-#'   default is \code{0.9} for \code{mcmc_intervals} (90\% interval)
-#'   and \code{1} for \code{mcmc_areas}.
+#'   default is \code{0.9} for \code{mcmc_intervals}
+#'   and \code{1} for \code{mcmc_areas} and \code{mcmc_joy}.
 #' @param point_est The point estimate to show. Either \code{"median"} (the
 #'   default), \code{"mean"}, or \code{"none"}.
 #' @param rhat An optional numeric vector of \eqn{\hat{R}}{Rhat} estimates, with
@@ -24,9 +25,9 @@
 #'   the intervals/areas and point estimates in the resulting plot are colored
 #'   based on \eqn{\hat{R}}{Rhat} value. See \code{\link{rhat}} for methods for
 #'   extracting \eqn{\hat{R}}{Rhat} estimates.
-#' @param bw,adjust,kernel For \code{mcmc_areas}, optional arguments passed to
-#'   \code{\link[stats]{density}} to override default kernel density estimation
-#'   parameters.
+#' @param bw,adjust,kernel For \code{mcmc_areas} and \code{mcmc_joy}, optional
+#'   arguments passed to \code{\link[stats]{density}} to override default kernel
+#'   density estimation parameters.
 #'
 #' @template return-ggplot
 #'
@@ -494,22 +495,23 @@ mcmc_joy <- function(x, pars = character(), regex_pars = character(),
 
   ggplot(dens_outer) +
     aes_(x = ~ x, y = ~ OrdParameter, height = ~ scaled_by_facet * 1.8) +
-    hline_at(1:length(unique(dens_outer$Parameter)),
-             size = 0.1, color = "gray") +
-    scale_y_discrete(expand=c(0.01, 0)) +
-    scale_x_continuous(expand=c(0, 0)) +
+    hline_at(
+      1:length(unique(dens_outer$Parameter)),
+      size = 0.1, color = "gray"
+    ) +
+
     labs(y = NULL, x = NULL) +
     ggjoy::geom_ridgeline(
       data = dens_inner,
       color = NA,
-      fill = get_color("l"),
-      alpha = 0.8
+      fill = get_color("l")
     ) +
     ggjoy::geom_ridgeline(
       fill = NA,
       color = get_color("dh")
     ) +
-    theme_default()
+    scale_y_discrete(expand=c(0.01, 0)) +
+    dont_expand_x_axis()
 }
 
 

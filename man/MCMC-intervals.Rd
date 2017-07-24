@@ -49,12 +49,13 @@ that the parameter is transformed (e.g. \code{"t(sigma)"}).}
 \item{...}{Currently unused.}
 
 \item{prob}{The probability mass to include in the inner interval (for
-\code{mcmc_intervals}) or in the shaded region (for \code{mcmc_areas}). The
-default is \code{0.5} (50\% interval).}
+\code{mcmc_intervals}) or in the shaded region (for \code{mcmc_areas},
+\code{mcmc_joy}). The default is \code{0.5} for \code{mcmc_intervals} and
+\code{mcmc_areas} and \code{0.8} for \code{mcmc_joy}.}
 
 \item{prob_outer}{The probability mass to include in the outer interval. The
-default is \code{0.9} for \code{mcmc_intervals} (90\% interval)
-and \code{1} for \code{mcmc_areas}.}
+default is \code{0.9} for \code{mcmc_intervals}
+and \code{1} for \code{mcmc_areas} and \code{mcmc_joy}.}
 
 \item{point_est}{The point estimate to show. Either \code{"median"} (the
 default), \code{"mean"}, or \code{"none"}.}
@@ -65,9 +66,9 @@ the intervals/areas and point estimates in the resulting plot are colored
 based on \eqn{\hat{R}}{Rhat} value. See \code{\link{rhat}} for methods for
 extracting \eqn{\hat{R}}{Rhat} estimates.}
 
-\item{bw, adjust, kernel}{For \code{mcmc_areas}, optional arguments passed to
-\code{\link[stats]{density}} to override default kernel density estimation
-parameters.}
+\item{bw, adjust, kernel}{For \code{mcmc_areas} and \code{mcmc_joy}, optional
+arguments passed to \code{\link[stats]{density}} to override default kernel
+density estimation parameters.}
 }
 \value{
 A ggplot object that can be further customized using the
