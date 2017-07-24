@@ -25,6 +25,7 @@ Imports:
     utils
 Suggests:
     arm,
+    ggjoy (>= 0.1),
     gridExtra (>= 2.2.1),
     knitr (>= 1.14),
     loo (>= 1.1.0),

@@ -166,14 +166,14 @@ mcmc_areas <- function(x,
 
 # @param x A matrix (not a 3-D array) created by merge_chains()
 .mcmc_intervals <- function(x,
-                           prob_inner = 0.5,
-                           prob_outer = 0.95,
-                           point_est = c("median", "mean", "none"),
-                           rhat = numeric(),
-                           show_density = FALSE,
-                           bw = NULL,
-                           adjust = NULL,
-                           kernel = NULL) {
+                            prob_inner = 0.5,
+                            prob_outer = 0.95,
+                            point_est = c("median", "mean", "none"),
+                            rhat = numeric(),
+                            show_density = FALSE,
+                            bw = NULL,
+                            adjust = NULL,
+                            kernel = NULL) {
   n_param <- ncol(x)
   parnames <- colnames(x)
 
@@ -398,8 +398,8 @@ mcmc_areas <- function(x,
 
     if (color_by_rhat)
       graph <- graph +
-        scale_color_diagnostic("rhat") +
-        scale_fill_diagnostic("rhat")
+      scale_color_diagnostic("rhat") +
+      scale_fill_diagnostic("rhat")
   }
 
   graph +
@@ -435,4 +435,96 @@ compute_dens_i <- function(x, bw, adjust, kernel, n, from, to) {
     kernel = kernel
   )
   do.call("density", args)
+}
+
+
+
+
+#' @export
+#' @importFrom dplyr do
+mcmc_joy <- function(x, pars = character(), regex_pars = character(),
+                     transformations = list(), ...,
+                     prob = 0.8, prob_outer = 1,
+                     bw = "nrd0",
+                     adjust = 1,
+                     kernel = "gaussian") {
+  check_ignored_arguments(...)
+  stopifnot(prob_outer >= prob)
+  x <- prepare_mcmc_array(x, pars, regex_pars, transformations)
+  x <- merge_chains(x)
+  mx <- reshape2::melt(x)[, -1]
+  colnames(mx)[1] <- "Parameter"
+
+  param_order <- mx %>%
+    group_by_(~ Parameter) %>%
+    summarise_(median = ~ median(value)) %>%
+    ungroup() %>%
+    mutate_(OrdParameter = ~ factor(Parameter) %>%
+              forcats::fct_reorder(median)) %>%
+    select_(.dots = list(~ Parameter, ~ OrdParameter))
+
+  mx <- dplyr::left_join(mx, param_order, by = "Parameter")
+
+  dens_outer <- mx %>%
+    group_by_(.dots = list(~ Parameter, ~ OrdParameter)) %>%
+    dplyr::do(.dens_calc_joy(
+      .$value,
+      prob = prob_outer,
+      bw = bw,
+      adjust = adjust,
+      kernel = kernel
+    )) %>%
+    ungroup() %>%
+    # group_by_( ~ Parameter) %>%
+    mutate_(scaled_by_facet = ~ density / max(density)) %>%
+    ungroup()
+
+  dens_inner <- mx %>%
+    group_by_(.dots = list(~ Parameter, ~ OrdParameter)) %>%
+    dplyr::do(.dens_calc_joy(
+      .$value,
+      prob = prob,
+      bw = bw,
+      adjust = adjust,
+      kernel = kernel
+    )) %>%
+    ungroup() %>%
+    mutate_(scaled_by_facet = ~ density / max(density)) %>%
+    ungroup()
+
+  ggplot(dens_outer) +
+    aes_(x = ~ x, y = ~ OrdParameter, height = ~ scaled_by_facet * 1.8) +
+    hline_at(1:length(unique(dens_outer$Parameter)),
+             size = 0.1, color = "gray") +
+    scale_y_discrete(expand=c(0.01, 0)) +
+    scale_x_continuous(expand=c(0, 0)) +
+    labs(y = NULL, x = NULL) +
+    ggjoy::geom_ridgeline(
+      data = dens_inner,
+      color = NA,
+      fill = get_color("l"),
+      alpha = 0.8
+    ) +
+    ggjoy::geom_ridgeline(
+      fill = NA,
+      color = get_color("dh")
+    ) +
+    theme_default()
+}
+
+
+.dens_calc_joy <- function(x, prob, bw, adjust, kernel, n = 1000) {
+  alpha <- (1 - prob)/2
+  probs <- c(alpha, 1 - alpha)
+  nx <- length(x)
+  qx <- range(quantile(x, probs))
+  xdens <- compute_dens_i(x, bw, adjust, kernel, n, from = qx[1], to = qx[2])
+  data.frame(
+    x = xdens$x,
+    density = xdens$y,
+    scaled = xdens$y / max(xdens$y, na.rm = TRUE),
+    count = xdens$y * nx,
+    n = nx,
+    interval_width = prob
+  )
 }
