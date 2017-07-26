@@ -4,6 +4,7 @@
 \alias{MCMC-intervals}
 \alias{mcmc_intervals}
 \alias{mcmc_areas}
+\alias{mcmc_joy}
 \title{Plot interval estimates from MCMC draws}
 \usage{
 mcmc_intervals(x, pars = character(), regex_pars = character(),
@@ -14,6 +15,11 @@ mcmc_areas(x, pars = character(), regex_pars = character(),
   transformations = list(), ..., prob = 0.5, prob_outer = 1,
   point_est = c("median", "mean", "none"), rhat = numeric(), bw = NULL,
   adjust = NULL, kernel = NULL)
+
+mcmc_joy(x, pars = character(), regex_pars = character(),
+  transformations = list(), ..., prob = 0.8, prob_outer = 1,
+  bw = "nrd0", adjust = 1, kernel = "gaussian", height_scalar = 1.5,
+  order_pars = TRUE)
 }
 \arguments{
 \item{x}{A 3-D array, matrix, list of matrices, or data frame of MCMC draws.
@@ -69,6 +75,13 @@ extracting \eqn{\hat{R}}{Rhat} estimates.}
 \item{bw, adjust, kernel}{For \code{mcmc_areas} and \code{mcmc_joy}, optional
 arguments passed to \code{\link[stats]{density}} to override default kernel
 density estimation parameters.}
+
+\item{height_scalar}{For \code{mcmc_joy}, a multiplicative factor used
+to increase or decrease the heights of the density plots.}
+
+\item{order_pars}{For \code{mcmc_joy}, by default the parameters are plotted
+in order of their median value. To override this default and plot them in
+the order provided in \code{x} set \code{order_pars} to \code{FALSE}.}
 }
 \value{
 A ggplot object that can be further customized using the
@@ -88,6 +101,13 @@ Plot central (quantile-based) interval estimates from MCMC draws. See the
   \item{\code{mcmc_areas}}{
    Density plots computed from posterior draws with all chains merged,
    with uncertainty intervals shown as shaded areas under the curves.
+  }
+  \item{\code{mcmc_joy}}{
+   Similar to \code{mcmc_areas} but the density plots are staggered and
+   ordered by posterior median. (See the \pkg{ggjoy} package for more
+   details.) The implementation of \code{mcmc_joy} in \pkg{bayesplot}
+   was inspired by a blog post by TJ Mahr
+   (\url{http://rpubs.com/tjmahr/joyplot}).
   }
 }
 }

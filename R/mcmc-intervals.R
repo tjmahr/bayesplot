@@ -41,6 +41,13 @@
 #'    Density plots computed from posterior draws with all chains merged,
 #'    with uncertainty intervals shown as shaded areas under the curves.
 #'   }
+#'   \item{\code{mcmc_joy}}{
+#'    Similar to \code{mcmc_areas} but the density plots are staggered and
+#'    ordered by posterior median. (See the \pkg{ggjoy} package for more
+#'    details.) The implementation of \code{mcmc_joy} in \pkg{bayesplot}
+#'    was inspired by a blog post by TJ Mahr
+#'    (\url{http://rpubs.com/tjmahr/joyplot}).
+#'   }
 #' }
 #'
 #' @examples
@@ -162,8 +169,108 @@ mcmc_areas <- function(x,
   )
 }
 
+#' @rdname MCMC-intervals
+#' @export
+#' @param height_scalar For \code{mcmc_joy}, a multiplicative factor used
+#'   to increase or decrease the heights of the density plots.
+#' @param order_pars For \code{mcmc_joy}, by default the parameters are plotted
+#'   in order of their median value. To override this default and plot them in
+#'   the order provided in \code{x} set \code{order_pars} to \code{FALSE}.
+#'
+#' @importFrom dplyr rename_ do_ left_join right_join
+mcmc_joy <- function(x,
+                     pars = character(),
+                     regex_pars = character(),
+                     transformations = list(),
+                     ...,
+                     prob = 0.8,
+                     prob_outer = 1,
+                     bw = "nrd0",
+                     adjust = 1,
+                     kernel = "gaussian",
+                     height_scalar = 1.5,
+                     order_pars = TRUE) {
+  check_ignored_arguments(...)
+  stopifnot(prob_outer >= prob, length(height_scalar) == 1)
+  x <- prepare_mcmc_array(x, pars, regex_pars, transformations)
+  x <- merge_chains(x)
+
+  plotdata <- .mcmc_joy_melt_and_order(x, order_pars)
+  dens_inner <- .mcmc_joy_dens_data(plotdata, prob, bw, adjust, kernel)
+  dens_outer <- .mcmc_joy_dens_data(plotdata, prob_outer, bw, adjust, kernel)
+
+  ggplot(dens_outer) +
+    aes_(x = ~ value, y = ~ Parameter, height = ~ height * height_scalar) +
+    hline_at(
+      1:length(unique(dens_outer$Parameter)),
+      size = 0.1,
+      color = "gray"
+    ) +
+    ggjoy::geom_ridgeline(
+      data = dens_inner,
+      color = NA,
+      fill = get_color("l")
+    ) +
+    ggjoy::geom_ridgeline(
+      fill = NA,
+      color = get_color("dh")
+    ) +
+    scale_y_discrete(expand = c(0.01, 0)) +
+    dont_expand_x_axis() +
+    yaxis_text(face = "bold") +
+    yaxis_title(FALSE) +
+    xaxis_title(FALSE)
+}
+
+
 
 # internal ----------------------------------------------------------------
+
+# @param x A matrix (not a 3-D array) created by merge_chains()
+# @param order_pars User's order_pars argument
+# @return A data frame with columns 'Parameter' (factor) and 'value' (numeric).
+#   If order_pars=TRUE then then the factor levels of 'Parameter' are arranged
+#   by the median of the 'value' variable.
+#
+.mcmc_joy_melt_and_order <- function(x, order_pars = FALSE) {
+  mx <- reshape2::melt(x)[, -1]
+  colnames(mx) <- c("Parameter", "value")
+
+  if (!order_pars)
+    return(mx)
+
+  mx %>%
+    group_by_( ~ Parameter) %>%
+    summarise_(Med = ~ median(value)) %>%
+    ungroup() %>%
+    mutate_(OrdParameter = ~ factor(Parameter, levels = Parameter[order(Med)])) %>%
+    select_(.dots = list( ~ Parameter, ~ OrdParameter)) %>%
+    dplyr::right_join(mx, by = "Parameter") %>%
+    select_(.dots = list( ~ -Parameter)) %>%
+    rename_(Parameter = ~ OrdParameter)
+}
+
+#
+# @param x The data frame returned by .mcmc_joy_data
+# @param prob The user's 'prob' or 'prob_outer' argument
+# @param bw,adjust,kernel Optional args passed to stats::density
+#
+# @return A data frame with columns 'Parameter' (factor), (factor), 'value'
+#   (numeric), 'height' (numeric) that can be passed to ggjoy::geom_ridgeline
+.mcmc_joy_dens_data <- function(x, prob, bw, adjust, kernel) {
+  x %>%
+    group_by_(.dots = list(~ Parameter)) %>%
+    do_(.dots = list(~ .compute_dens_i_joy(
+      .$value,
+      prob = prob,
+      bw = bw,
+      adjust = adjust,
+      kernel = kernel
+    ))) %>%
+    ungroup() %>%
+    mutate_(height = ~ dens / max(dens)) %>%
+    select_(.dots = list(~ Parameter, ~ height, ~ value))
+}
 
 # @param x A matrix (not a 3-D array) created by merge_chains()
 .mcmc_intervals <- function(x,
@@ -223,7 +330,7 @@ mcmc_areas <- function(x,
     y_dens <- matrix(0, nrow = n_dens_pts, ncol = n_param)
     x_dens <- matrix(0, nrow = n_dens_pts, ncol = n_param)
     for (i in seq_len(n_param)) {
-      d_temp <- compute_dens_i(
+      d_temp <- .compute_dens_i(
         x = x[, i],
         from = quantiles[i, 1],
         to = quantiles[i, 5],
@@ -262,7 +369,7 @@ mcmc_areas <- function(x,
     y_poly <- matrix(0, nrow = n_dens_pts + 2, ncol = n_param)
     x_poly <- matrix(0, nrow = n_dens_pts + 2, ncol = n_param)
     for (i in seq_len(n_param)) {
-      d_temp <- compute_dens_i(
+      d_temp <- .compute_dens_i(
         x = x[, i],
         from = quantiles[i, 2],
         to = quantiles[i, 4],
@@ -413,14 +520,12 @@ mcmc_areas <- function(x,
     legend_move(ifelse(color_by_rhat, "top", "none")) +
     yaxis_text(face = "bold") +
     yaxis_title(FALSE) +
-    yaxis_ticks(size = 1) +
     xaxis_title(FALSE)
 }
 
 
-# compute kernel density estimates
-# all arguments are passed to stats::density
-compute_dens_i <- function(x, bw, adjust, kernel, n, from, to) {
+# compute density estimates for mcmc_areas
+.compute_dens_i <- function(x, bw, adjust, kernel, n, from, to) {
   args <- c(
     # can't be null
     list(
@@ -437,95 +542,13 @@ compute_dens_i <- function(x, bw, adjust, kernel, n, from, to) {
   do.call("density", args)
 }
 
-
-
-
-#' @export
-#' @importFrom dplyr do
-mcmc_joy <- function(x, pars = character(), regex_pars = character(),
-                     transformations = list(), ...,
-                     prob = 0.8, prob_outer = 1,
-                     bw = "nrd0",
-                     adjust = 1,
-                     kernel = "gaussian") {
-  check_ignored_arguments(...)
-  stopifnot(prob_outer >= prob)
-  x <- prepare_mcmc_array(x, pars, regex_pars, transformations)
-  x <- merge_chains(x)
-  mx <- reshape2::melt(x)[, -1]
-  colnames(mx)[1] <- "Parameter"
-
-  param_order <- mx %>%
-    group_by_(~ Parameter) %>%
-    summarise_(median = ~ median(value)) %>%
-    ungroup() %>%
-    mutate_(OrdParameter = ~ factor(Parameter) %>%
-              forcats::fct_reorder(median)) %>%
-    select_(.dots = list(~ Parameter, ~ OrdParameter))
-
-  mx <- dplyr::left_join(mx, param_order, by = "Parameter")
-
-  dens_outer <- mx %>%
-    group_by_(.dots = list(~ Parameter, ~ OrdParameter)) %>%
-    dplyr::do(.dens_calc_joy(
-      .$value,
-      prob = prob_outer,
-      bw = bw,
-      adjust = adjust,
-      kernel = kernel
-    )) %>%
-    ungroup() %>%
-    # group_by_( ~ Parameter) %>%
-    mutate_(scaled_by_facet = ~ density / max(density)) %>%
-    ungroup()
-
-  dens_inner <- mx %>%
-    group_by_(.dots = list(~ Parameter, ~ OrdParameter)) %>%
-    dplyr::do(.dens_calc_joy(
-      .$value,
-      prob = prob,
-      bw = bw,
-      adjust = adjust,
-      kernel = kernel
-    )) %>%
-    ungroup() %>%
-    mutate_(scaled_by_facet = ~ density / max(density)) %>%
-    ungroup()
-
-  ggplot(dens_outer) +
-    aes_(x = ~ x, y = ~ OrdParameter, height = ~ scaled_by_facet * 1.8) +
-    hline_at(
-      1:length(unique(dens_outer$Parameter)),
-      size = 0.1, color = "gray"
-    ) +
-
-    labs(y = NULL, x = NULL) +
-    ggjoy::geom_ridgeline(
-      data = dens_inner,
-      color = NA,
-      fill = get_color("l")
-    ) +
-    ggjoy::geom_ridgeline(
-      fill = NA,
-      color = get_color("dh")
-    ) +
-    scale_y_discrete(expand=c(0.01, 0)) +
-    dont_expand_x_axis()
-}
-
-
-.dens_calc_joy <- function(x, prob, bw, adjust, kernel, n = 1000) {
-  alpha <- (1 - prob)/2
+# compute density estimates for mcmc_joy
+.compute_dens_i_joy <- function(x, prob, bw, adjust, kernel, n = 1e3) {
+  alpha <- (1 - prob) / 2
   probs <- c(alpha, 1 - alpha)
-  nx <- length(x)
-  qx <- range(quantile(x, probs))
-  xdens <- compute_dens_i(x, bw, adjust, kernel, n, from = qx[1], to = qx[2])
-  data.frame(
-    x = xdens$x,
-    density = xdens$y,
-    scaled = xdens$y / max(xdens$y, na.rm = TRUE),
-    count = xdens$y * nx,
-    n = nx,
-    interval_width = prob
-  )
+  bounds <- range(quantile(x, probs))
+  xdens <- stats::density.default(x, bw, adjust, kernel, n = n,
+                                  from = bounds[1], to = bounds[2])
+  data.frame(value = xdens$x, dens = xdens$y)
 }
+
